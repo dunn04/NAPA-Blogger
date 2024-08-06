@@ -1,6 +1,12 @@
 import { FC } from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { RenderRouter } from './routes'
 
 const App: FC = () => {
-  return <h1 className='text-center text-green-500 text-2xl'>Hello world</h1>
+  return (
+    <BrowserRouter>
+      <RenderRouter />
+    </BrowserRouter>
+  )
 }
 export default App
