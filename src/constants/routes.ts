@@ -1,5 +1,8 @@
 const ROUTE_PATHS = {
-  HOME: '/'
+  HOME: '/',
+  POPULAR_POST: '/popular-post',
+  LOGIN: '/login',
+  SIGNUP: '/signup'
 }
 
 const ROUTE_ACTIONS = {}
