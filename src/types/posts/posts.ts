@@ -21,12 +21,12 @@ export type PostInstance = Omit<Post, 'statusId' | 'authorId'> & {
   likes: number
   comments: number
   bookmarked: boolean
-  categories: Category[]
+  category: Category
 }
 
 export type PostCreateParams = Pick<Post, 'title' | 'content'> & {
   tags: number[]
-  categories: number[]
+  categoryId: number
 }
 
 export interface PostImage {
@@ -41,8 +41,8 @@ export interface PostImage {
 
 export type PostSimplify = Pick<
   PostInstance,
-  'id' | 'title' | 'content' | 'publishedAt' | 'likes' | 'comments' | 'bookmarked' | 'categories' | 'author'
+  'id' | 'title' | 'content' | 'publishedAt' | 'likes' | 'comments' | 'bookmarked' | 'author'
 > & {
   background: string
-  tag: Tag
+  category: Category
 }

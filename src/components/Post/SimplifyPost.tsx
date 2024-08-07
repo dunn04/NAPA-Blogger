@@ -19,7 +19,7 @@ const SimplifyPost: FC<Props> = ({ className, post }) => {
   const { author } = post
   const content = useMemo(() => limitTextToWords(post.content, LIMIT_WORDS), [post.content])
   return (
-    <Badge.Ribbon text={post.tag.name} color={post.tag.color} rootClassName={twMerge(className)}>
+    <Badge.Ribbon text={post.category.name} rootClassName={twMerge(className)}>
       <Card>
         <Flex className='mt-2'>
           <Author author={author} avatarSize='large' />
@@ -33,7 +33,7 @@ const SimplifyPost: FC<Props> = ({ className, post }) => {
             <Link to='#'>
               <Typography.Title level={3}>{post.title}</Typography.Title>
             </Link>
-            <Typography.Text className=''>{content}</Typography.Text>
+            <Typography.Text className='opacity-75'>{content}</Typography.Text>
           </div>
           <div className='hidden lg:flex'>
             <Image width={200} src={post.background} alt={post.title} className='object-cover rounded-md' />
