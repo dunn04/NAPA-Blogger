@@ -12,6 +12,10 @@ const HEADER_AVATAR_DROPDOWN_ITEMS: MenuProps['items'] = [
     label: 'Saved blogs'
   },
   {
+    key: 'create-new-blog',
+    label: 'Create new blog'
+  },
+  {
     key: 'settings',
     label: 'Settings'
   },
