@@ -29,7 +29,12 @@ const Logo: FC<Props> = ({ shapes = 'square', className, sizes = 'md' }) => {
   const { token } = theme.useToken()
   return (
     <div
-      className={twMerge('inline-flex justify-center items-center', SHAPES[shapes], SIZES[sizes], className)}
+      className={twMerge(
+        'inline-flex justify-center items-center flex-shrink-0',
+        SHAPES[shapes],
+        SIZES[sizes],
+        className
+      )}
       style={{
         backgroundColor: token.colorPrimary
       }}

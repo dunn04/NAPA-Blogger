@@ -11,14 +11,15 @@ const Sidebar: FC<Props> = ({ className }) => {
   const { token } = theme.useToken()
   return (
     <Layout.Sider
+      collapsedWidth={80}
       collapsed
       style={{
         backgroundColor: token.colorBgContainer
       }}
       width={240}
-      className={twMerge('', className)}
+      className={twMerge('shadow-sm', className)}
     >
-      <Menu items={SIDE_BAR_MENU_ITEMS} />
+      <Menu items={SIDE_BAR_MENU_ITEMS} className='h-full !border-r-0' />
     </Layout.Sider>
   )
 }

@@ -1,5 +1,5 @@
 import { Author as IAuthor } from '@/types'
-import { Avatar, Space, Tooltip, Typography } from 'antd'
+import { Avatar, AvatarProps, Space, Tooltip, Typography } from 'antd'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -7,18 +7,15 @@ type Props = {
   className?: string
   author: IAuthor
   onlyAvatar?: boolean
+  avatarSize?: AvatarProps['size']
 }
 
-const Author: FC<Props> = ({ className, author, onlyAvatar = false }) => {
+const Author: FC<Props> = ({ className, author, onlyAvatar = false, avatarSize = 'default' }) => {
   const element = (
     <Link to='#'>
       <Space>
-        <Avatar className={className} src={author.avatar} alt={author.name} />
-        {!onlyAvatar && (
-          <Typography.Title level={5} className='!mb-0'>
-            {author.name}
-          </Typography.Title>
-        )}
+        <Avatar className={className} src={author.avatar} alt={author.name} size={avatarSize} />
+        {!onlyAvatar && <Typography.Text className='!mb-0 font-semibold'>{author.name}</Typography.Text>}
       </Space>
     </Link>
   )

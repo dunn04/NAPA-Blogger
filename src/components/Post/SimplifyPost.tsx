@@ -6,6 +6,7 @@ import { Author } from '../Avatar'
 import { ToggleBookmark } from '../Button'
 import { PostShareDropdown } from './PostShareDropdown'
 import { limitTextToWords, makeBeautyDate } from '@/utils'
+import { Link } from 'react-router-dom'
 
 type Props = {
   className?: string
@@ -18,10 +19,10 @@ const SimplifyPost: FC<Props> = ({ className, post }) => {
   const { author } = post
   const content = useMemo(() => limitTextToWords(post.content, LIMIT_WORDS), [post.content])
   return (
-    <Badge.Ribbon text={post.tag.name} color={post.tag.color}>
-      <Card className={twMerge(className)}>
+    <Badge.Ribbon text={post.tag.name} color={post.tag.color} rootClassName={twMerge(className)}>
+      <Card>
         <Flex className='mt-2'>
-          <Author author={author} />
+          <Author author={author} avatarSize='large' />
           <Space className='ml-auto'>
             <ToggleBookmark />
             <PostShareDropdown />
@@ -29,7 +30,9 @@ const SimplifyPost: FC<Props> = ({ className, post }) => {
         </Flex>
         <Flex gap={14} className='mt-2'>
           <div className='flex-1'>
-            <Typography.Title level={3}>{post.title}</Typography.Title>
+            <Link to='#'>
+              <Typography.Title level={3}>{post.title}</Typography.Title>
+            </Link>
             <Typography.Text className=''>{content}</Typography.Text>
           </div>
           <div className='hidden lg:flex'>

@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif']
+        poppins: ['Poppins', 'sans-serif'],
+        pacifico: ['Pacifico', 'cursive']
       },
       colors: {
         surface: '#F5F4FE'
