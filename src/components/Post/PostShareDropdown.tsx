@@ -19,9 +19,7 @@ const PostShareDropdown: FC<Props> = ({ className, onMenuClick, trigger = ['clic
       }}
       trigger={trigger}
     >
-      <Button type='text'>
-        <MoreOutlined />
-      </Button>
+      <Button type='text' icon={<MoreOutlined />}></Button>
     </Dropdown>
   )
 }

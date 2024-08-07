@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from 'antd'
-import { FC, ReactNode, useEffect, useState } from 'react'
+import { FC, PropsWithChildren, ReactNode, useEffect, useState } from 'react'
 
 export type ToggleButtonProps = {
   className?: string
@@ -10,7 +10,7 @@ export type ToggleButtonProps = {
   onClick?: () => void
   defaultValue?: boolean
   type?: ButtonProps['type']
-}
+} & PropsWithChildren
 
 const ToggleButton: FC<ToggleButtonProps> = ({
   className,
@@ -20,7 +20,8 @@ const ToggleButton: FC<ToggleButtonProps> = ({
   onChange,
   onClick,
   defaultValue,
-  type = 'text'
+  type = 'text',
+  children
 }) => {
   const [checked, setChecked] = useState(defaultValue)
 
@@ -38,9 +39,13 @@ const ToggleButton: FC<ToggleButtonProps> = ({
   }
 
   return (
-    <Button type={type} className={className} onClick={handleClick}>
-      {checked ? checkedIcon : unCheckedIcon}
-    </Button>
+    <Button
+      type={type}
+      className={className}
+      onClick={handleClick}
+      icon={checked ? checkedIcon : unCheckedIcon}
+      children={children}
+    />
   )
 }
 

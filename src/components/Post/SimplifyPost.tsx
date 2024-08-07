@@ -7,6 +7,7 @@ import { ToggleBookmark } from '../Button'
 import { PostShareDropdown } from './PostShareDropdown'
 import { limitTextToWords, makeBeautyDate } from '@/utils'
 import { Link } from 'react-router-dom'
+import { ROUTE_ACTIONS } from '@/constants'
 
 type Props = {
   className?: string
@@ -17,7 +18,7 @@ const LIMIT_WORDS = 20
 
 const SimplifyPost: FC<Props> = ({ className, post }) => {
   const { author } = post
-  const content = useMemo(() => limitTextToWords(post.content, LIMIT_WORDS), [post.content])
+  const content = useMemo(() => limitTextToWords(post.shortContent, LIMIT_WORDS), [post.shortContent])
   return (
     <Badge.Ribbon text={post.category.name} rootClassName={twMerge(className)}>
       <Card>
@@ -30,7 +31,7 @@ const SimplifyPost: FC<Props> = ({ className, post }) => {
         </Flex>
         <Flex gap={14} className='mt-2'>
           <div className='flex-1'>
-            <Link to='#'>
+            <Link to={ROUTE_ACTIONS.BLOG_DETAIL_WITH_ID(`${post.id}`)}>
               <Typography.Title level={3}>{post.title}</Typography.Title>
             </Link>
             <Typography.Text className='opacity-75'>{content}</Typography.Text>
