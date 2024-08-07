@@ -9,6 +9,7 @@ export interface Post extends Timestamped {
   id: number
   title: string
   content: string
+  shortContent: string
   statusId: number
   authorId: number
   publishedAt: number
@@ -41,7 +42,7 @@ export interface PostImage {
 
 export type PostSimplify = Pick<
   PostInstance,
-  'id' | 'title' | 'content' | 'publishedAt' | 'likes' | 'comments' | 'bookmarked' | 'author'
+  'id' | 'title' | 'shortContent' | 'publishedAt' | 'likes' | 'comments' | 'bookmarked' | 'author'
 > & {
   background: string
   category: Category

@@ -16,7 +16,7 @@ const POST: PostSimplify = {
     name: 'Technology'
   },
   comments: 10,
-  content:
+  shortContent:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultricies ultricies. Nullam nec purus ut libero ultricies ultricies. Nullam nec purus ut libero ultricies ultricies. Nullam nec purus ut libero ultricies ultricies. Nullam nec purus ut libero ultricies ultricies. Nullam nec purus ut libero ultricies ultricies. Nullam nec purus ut libero ultricies ultricies.',
   id: 1,
   likes: 100,

@@ -22,6 +22,7 @@ export interface CommentImage {
   uploadedAt: number
 }
 
-export type CommentInstance = Omit<Comment, 'authorId'> & {
+export type CommentInstance = Omit<Comment, 'authorId' | 'parentCommentId'> & {
   author: Author
+  replies: CommentInstance[]
 }

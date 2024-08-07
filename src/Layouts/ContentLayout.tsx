@@ -55,7 +55,7 @@ const CATEGORIES: Category[] = [
   }
 ]
 const WithCategories: FC<WithCategoriesProps> = ({ children, ignoreCategories, ...props }) => {
-  const categories = CATEGORIES.filter((category) => !ignoreCategories?.includes(category.name))
+  const categories = CATEGORIES.filter((category) => !ignoreCategories?.includes(category.id + ''))
 
   const RightPanel = <Categories categories={categories} />
 
