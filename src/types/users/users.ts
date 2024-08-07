@@ -6,14 +6,13 @@ export interface User extends Timestamped {
   name: string
   email: string
   password: string
-  avatar: string
   role: Role
 }
 
 export interface UserProfile {
-  id: number
   userId: number
   bio: string
+  avatar: string
 }
 
 export type UserInfo = Omit<User, 'password'> &

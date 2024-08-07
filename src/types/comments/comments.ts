@@ -9,6 +9,7 @@ export interface Comment extends Timestamped {
   authorId: number
   postId: number
   status: CommentStatus
+  parentCommentId: number | null
 }
 
 export interface CommentImage {

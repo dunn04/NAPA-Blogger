@@ -1,13 +1,13 @@
 import { Timestamped } from '../common'
 import { Author } from '../users'
 import { Category } from './categories'
-import { Tags } from './tags'
+import { Tag } from './tags'
 
 export type PostStatus = 'published' | 'pending' | 'draft' | 'rejected'
 
 export interface Post extends Timestamped {
   id: number
-  title: number
+  title: string
   content: string
   statusId: number
   authorId: number
@@ -17,7 +17,7 @@ export interface Post extends Timestamped {
 export type PostInstance = Omit<Post, 'statusId' | 'authorId'> & {
   status: PostStatus
   author: Author
-  tags: Tags[]
+  tags: Tag[]
   likes: number
   comments: number
   bookmarked: boolean
@@ -37,4 +37,12 @@ export interface PostImage {
   size: number
   postId: number
   uploadedAt: number
+}
+
+export type PostSimplify = Pick<
+  PostInstance,
+  'id' | 'title' | 'content' | 'publishedAt' | 'likes' | 'comments' | 'bookmarked' | 'categories' | 'author'
+> & {
+  background: string
+  tag: Tag
 }
