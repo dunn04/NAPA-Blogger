@@ -1,5 +1,7 @@
+import { ROUTE_PATHS } from '@/constants'
 import { theme } from 'antd'
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 
 const SHAPES = {
@@ -28,7 +30,8 @@ type Props = {
 const Logo: FC<Props> = ({ shapes = 'square', className, sizes = 'md' }) => {
   const { token } = theme.useToken()
   return (
-    <div
+    <Link
+      to={ROUTE_PATHS.HOME}
       className={twMerge(
         'inline-flex justify-center items-center flex-shrink-0',
         SHAPES[shapes],
@@ -40,7 +43,7 @@ const Logo: FC<Props> = ({ shapes = 'square', className, sizes = 'md' }) => {
       }}
     >
       <p className={twMerge('font-pacifico text-white', FONTS[sizes])}>D</p>
-    </div>
+    </Link>
   )
 }
 

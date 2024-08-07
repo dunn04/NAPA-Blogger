@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# NAPA Training Project (Blogger)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduce
 
-Currently, two official plugins are available:
+- The target reactjs practice project helps to know how to analyze UX/UI, project structure and configure the tools a project needs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Timeline
 
-## Expanding the ESLint configuration
+- August 7 2024 - none
+- Database Diagram: [Here](https://dbdiagram.io/d/Blogger-Database-Diagram-66b0d9368b4bb5230e42b789)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Target
 
-- Configure the top-level `parserOptions` property like this:
+- Understanding the Reactjs project structure.
+- Learn how to analyze a design.
+- Learn to use tools.
+- Knowing how to write clean code.
+- Learn to use git, eslint, prettier...
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Technical Stacks
+
+- Vite
+- Reactjs
+- Tailwindcss
+- React Router Dom
+- Ant Design
+- Typescript
+
+## Run
+
+- Default host: http://localhost:5173
+- Clone and cd to project folder and run the following commands:
+
+```bash
+  npm install
+  npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Open your browser and access the default host.
