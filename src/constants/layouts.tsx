@@ -4,19 +4,19 @@ import { HomeOutlined, WifiOutlined } from '@ant-design/icons'
 
 const HEADER_AVATAR_DROPDOWN_ITEMS: MenuProps['items'] = [
   {
-    key: 'my-blogs',
+    key: ROUTE_PATHS.MY_BLOGS,
     label: 'My blogs'
   },
   {
-    key: 'saved-blogs',
+    key: ROUTE_PATHS.SAVED_BLOGS,
     label: 'Saved blogs'
   },
   {
-    key: 'create-new-blog',
+    key: ROUTE_PATHS.CREATE_NEW_BLOG,
     label: 'Create new blog'
   },
   {
-    key: 'settings',
+    key: ROUTE_PATHS.SETTINGS,
     label: 'Settings'
   },
   {
@@ -24,7 +24,7 @@ const HEADER_AVATAR_DROPDOWN_ITEMS: MenuProps['items'] = [
     type: 'divider'
   },
   {
-    key: 'logout',
+    key: ROUTE_PATHS.LOGOUT,
     label: 'Logout'
   }
 ]

@@ -1,4 +1,4 @@
-import { Header, Sidebar } from '@/components'
+import { Footer, Header, Sidebar } from '@/components'
 import { Layout } from 'antd'
 import { FC } from 'react'
 import { Outlet } from 'react-router-dom'
@@ -11,6 +11,7 @@ const MainLayout: FC = () => {
       <Layout.Content className='p-2 mt-16 ml-20'>
         <Outlet />
       </Layout.Content>
+      <Footer />
     </div>
   )
 }
