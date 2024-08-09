@@ -1,7 +1,7 @@
-import { Badge, Button, Input, Layout, Space, theme } from 'antd'
-import { FC } from 'react'
+import { Badge, Button, Input, Layout, MenuProps, Space, theme } from 'antd'
+import { FC, useMemo } from 'react'
 import { Logo } from '../Logo'
-import { AvatarDropdown } from '../Avatar'
+import { Author, AvatarDropdown } from '../Avatar'
 import { NotificationOutlined, PlusOutlined } from '@ant-design/icons'
 import { HEADER_AVATAR_DROPDOWN_ITEMS } from '@/constants'
 import { twMerge } from 'tailwind-merge'
@@ -13,6 +13,23 @@ type Props = {
 
 const Header: FC<Props> = ({ className }) => {
   const { token } = theme.useToken()
+
+  const authorItem = useMemo<Required<MenuProps>['items'][number]>(() => {
+    return {
+      key: 'author',
+      type: 'item',
+      label: (
+        <Author
+          author={{
+            avatar: 'https://avatars.githubusercontent.com/u/44036559?v=4',
+            id: 1,
+            name: 'Dunn'
+          }}
+        />
+      )
+    }
+  }, [])
+
   return (
     <Layout.Header
       style={{
@@ -40,7 +57,13 @@ const Header: FC<Props> = ({ className }) => {
             name: 'Dunn'
           }}
           menu={{
-            items: HEADER_AVATAR_DROPDOWN_ITEMS
+            items: [
+              authorItem,
+              {
+                type: 'divider'
+              },
+              ...HEADER_AVATAR_DROPDOWN_ITEMS
+            ]
           }}
         />
       </Space>

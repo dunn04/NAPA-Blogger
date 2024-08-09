@@ -121,7 +121,7 @@ const PostDetailPage: FC = () => {
   const [openComment, toggleComment] = useToggle(false)
 
   return (
-    <div className='max-w-3xl mx-auto'>
+    <div className='max-w-4xl mx-auto'>
       <Typography.Title level={2}>{post.title}</Typography.Title>
       <Flex justify='center' className='mt-2'>
         <Author author={post.author} avatarSize='large' />

@@ -2,7 +2,7 @@ import { MenuProps } from 'antd'
 import { ROUTE_PATHS } from './routes'
 import { HomeOutlined, WifiOutlined } from '@ant-design/icons'
 
-const HEADER_AVATAR_DROPDOWN_ITEMS: MenuProps['items'] = [
+const HEADER_AVATAR_DROPDOWN_ITEMS: Required<MenuProps>['items'] = [
   {
     key: ROUTE_PATHS.MY_BLOGS,
     label: 'My blogs'

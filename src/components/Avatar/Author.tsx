@@ -1,3 +1,4 @@
+import { ROUTE_ACTIONS } from '@/constants'
 import { Author as IAuthor } from '@/types'
 import { Avatar, AvatarProps, Space, Tooltip, Typography } from 'antd'
 import { FC } from 'react'
@@ -12,10 +13,14 @@ type Props = {
 
 const Author: FC<Props> = ({ className, author, onlyAvatar = false, avatarSize = 'default' }) => {
   const element = (
-    <Link to='#'>
+    <Link to={ROUTE_ACTIONS.USER_PROFILE_WITH_ID(`${author.id}`)}>
       <Space>
         <Avatar className={className} src={author.avatar} alt={author.name} size={avatarSize} />
-        {!onlyAvatar && <Typography.Text className='!mb-0 font-semibold'>{author.name}</Typography.Text>}
+        {!onlyAvatar && (
+          <Typography.Text className='!mb-0 font-semibold !text-ant-text-color transition-colors hover:!text-ant-primary '>
+            {author.name}
+          </Typography.Text>
+        )}
       </Space>
     </Link>
   )

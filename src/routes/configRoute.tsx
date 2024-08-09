@@ -1,6 +1,6 @@
 import { ROUTE_PATHS } from '@/constants'
 import { MainLayout } from '@/Layouts'
-import { HomePage, PostDetailPage } from '@/pages'
+import { HomePage, NotFoundPage, PostDetailPage, ProfilePage } from '@/pages'
 import { RouteObject } from 'react-router-dom'
 import { WrapperRoute } from './WrapperRoute'
 
@@ -16,8 +16,16 @@ const configRoute: RouteObject[] = [
       {
         path: ROUTE_PATHS.BLOG_DETAIL.WITH_ID,
         element: <WrapperRoute element={<PostDetailPage />} auth />
+      },
+      {
+        path: ROUTE_PATHS.PROFILE.WITH_ID,
+        element: <WrapperRoute element={<ProfilePage />} auth />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />
   }
 ]
 

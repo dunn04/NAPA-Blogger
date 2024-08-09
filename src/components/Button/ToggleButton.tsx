@@ -10,6 +10,8 @@ export type ToggleButtonProps = {
   onClick?: () => void
   defaultValue?: boolean
   type?: ButtonProps['type']
+  checkedText?: string
+  unCheckedText?: string
 } & PropsWithChildren
 
 const ToggleButton: FC<ToggleButtonProps> = ({
@@ -21,7 +23,9 @@ const ToggleButton: FC<ToggleButtonProps> = ({
   onClick,
   defaultValue,
   type = 'text',
-  children
+  children,
+  checkedText,
+  unCheckedText
 }) => {
   const [checked, setChecked] = useState(defaultValue)
 
@@ -44,7 +48,7 @@ const ToggleButton: FC<ToggleButtonProps> = ({
       className={className}
       onClick={handleClick}
       icon={checked ? checkedIcon : unCheckedIcon}
-      children={children}
+      children={children || (checked ? checkedText : unCheckedText)}
     />
   )
 }
