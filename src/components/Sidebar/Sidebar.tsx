@@ -19,7 +19,7 @@ const Sidebar: FC<Props> = ({ className }) => {
       width={240}
       className={twMerge('shadow-sm', className)}
     >
-      <Menu items={SIDE_BAR_MENU_ITEMS} className='h-full !border-r-0' />
+      <Menu items={SIDE_BAR_MENU_ITEMS} className='h-full !border-r-0' selectedKeys={[location.pathname]} />
     </Layout.Sider>
   )
 }

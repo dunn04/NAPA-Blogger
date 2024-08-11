@@ -15,8 +15,12 @@ const BLOGS = {
   SAVED_BLOGS: '/saved-blogs',
   CREATE_NEW_BLOG: '/create-new-blog',
   BLOG_DETAIL: {
-    BASE: '/blogs',
-    WITH_ID: '/blogs/:id'
+    BASE: '/blogs/detail',
+    WITH_ID: '/blogs/detail/:id'
+  },
+  BLOG_TAGS: {
+    BASE: '/blogs/tags',
+    WITH_TAG: '/blogs/tags/:tag'
   }
 }
 
@@ -36,6 +40,7 @@ const ROUTE_PATHS = {
 
 const ROUTE_ACTIONS = {
   BLOG_DETAIL_WITH_ID: (id: string) => `${BLOGS.BLOG_DETAIL.BASE}/${id}`,
+  BLOG_WITH_TAG: (tag: string) => `${BLOGS.BLOG_TAGS.BASE}/${tag}`,
   USER_PROFILE_WITH_ID: (id: string) => `${USER.PROFILE.BASE}/${id}`
 }
 

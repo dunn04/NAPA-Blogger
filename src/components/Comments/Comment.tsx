@@ -1,10 +1,13 @@
 import { CommentInstance } from '@/types'
 import { FC } from 'react'
 import { Author } from '../Avatar'
-import { Badge, Button, Dropdown, Flex, Typography } from 'antd'
+import { Badge, Button, Dropdown, Flex } from 'antd'
 import { makeBeautyDate } from '@/utils'
-import { EllipsisOutlined, MessageOutlined } from '@ant-design/icons'
+import { EllipsisOutlined } from '@ant-design/icons'
 import { POST_SHARE_ITEM } from '@/constants'
+import { ToggleEditor } from './ToggleEditor'
+import { ContentPreview } from '../Editor'
+import { CommentProvider } from '@/providers'
 
 type Props = {
   className?: string
@@ -22,11 +25,15 @@ const Comment: FC<Props> = ({ className, comment, withAction = true }) => {
           <Button type='text' icon={<EllipsisOutlined />} />
         </Dropdown>
       </Flex>
-      <Typography.Paragraph>{comment.content}</Typography.Paragraph>
+      <ContentPreview source={comment.content} />
       {withAction && (
-        <Button type='text' icon={<MessageOutlined />} className='mb-4'>
-          Reply
-        </Button>
+        <CommentProvider
+          props={{
+            author: comment.author
+          }}
+        >
+          <ToggleEditor className='my-2' />
+        </CommentProvider>
       )}
       {comment.replies.length > 0 && (
         <div className='ml-6 border-l border-gray-200 px-4'>

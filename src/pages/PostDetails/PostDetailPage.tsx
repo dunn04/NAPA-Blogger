@@ -1,4 +1,11 @@
-import { Author, ToggleBookmark, PostShareDropdown, ToggleButton, PostCommentDrawer } from '@/components'
+import {
+  Author,
+  ToggleBookmark,
+  PostShareDropdown,
+  ToggleButton,
+  PostCommentDrawer,
+  ContentPreview
+} from '@/components'
 import { useToggle } from '@/hooks'
 import { CommentInstance, PostInstance } from '@/types'
 import { makeBeautyDate } from '@/utils'
@@ -12,40 +19,25 @@ import { useParams } from 'react-router-dom'
 const getPostWithId = (id: string): PostInstance => ({
   id: Number(id),
   title: 'Lorem ipsum dolor sit amet',
-  content: `<p>
-    <span style="font-size: 18px;">Quill Rich Text Editor</span>
-</p>
-<p>
-    <br>
-</p>
-<p class="ant-typography">Quill is a free,
-    <a href="https://github.com/quilljs/quill/" target="_blank">open source</a>WYSIWYG editor built for the modern web. With its
-    <a href="http://quilljs.com/docs/modules/" target="_blank">extensible architecture</a>and a
-    <a href="http://quilljs.com/docs/api/" target="_blank">expressive API</a>you can completely customize it to fulfill your needs. Some built in features include:</p>
-<p>
-    <br>
-</p>
-<ul>
-    <li>Fast and lightweight</li>
-    <li>Semantic markup</li>
-    <li>Standardized HTML between browsers</li>
-    <li>Cross browser support including Chrome, Firefox, Safari, and IE 9+</li>
-</ul>
-<p>
-    <br>
-</p>
-<p>
-    <span style="font-size: 18px;">Downloads</span>
-</p>
-<p>
-    <br>
-</p>
-<ul>
-    <li>
-        <a href="https://quilljs.com" target="_blank">Quill.js</a>, the free, open source WYSIWYG editor</li>
-    <li>
-        <a href="https://zenoamaro.github.io/react-quill" target="_blank">React-quill</a>, a React component that wraps Quill.js</li>
-</ul>`,
+  content: `> 
+> 
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+
+
+`,
   shortContent:
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo incidunt atque ex magni consequuntur non quisquam sit, fugiat tenetur error voluptates sed ad perferendis natus reprehenderit veniam est minus neque.',
   status: 'published',
@@ -131,7 +123,7 @@ const PostDetailPage: FC = () => {
         </Space>
       </Flex>
       <Badge status='success' text={`Published at ${makeBeautyDate(post.publishedAt)}`} className='my-4' />
-      <div className='mt-4' dangerouslySetInnerHTML={{ __html: post.content }} />
+      <ContentPreview source={post.content} />
       <Divider />
       <Space>
         <ToggleButton
