@@ -4,9 +4,11 @@ import {
   PostShareDropdown,
   ToggleButton,
   PostCommentDrawer,
-  ContentPreview
+  ContentPreview,
+  ListPost
 } from '@/components'
-import { useToggle } from '@/hooks'
+import { POSTS } from '@/constants'
+import { useScrollTop, useToggle } from '@/hooks'
 import { CommentInstance, PostInstance } from '@/types'
 import { makeBeautyDate } from '@/utils'
 import { CommentOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons'
@@ -75,6 +77,7 @@ const getPostWithId = (id: string): PostInstance => ({
   updatedAt: Date.now()
 })
 
+// Fake comments
 const COMMENT: CommentInstance = {
   id: 1,
   author: {
@@ -108,6 +111,7 @@ const COMMENTS: CommentInstance[] = Array.from({ length: 10 }, (_, i) => {
 })
 
 const PostDetailPage: FC = () => {
+  useScrollTop()
   const { id } = useParams<{ id: string }>()
   const post = getPostWithId(id || '1')
   const [openComment, toggleComment] = useToggle(false)
@@ -124,8 +128,7 @@ const PostDetailPage: FC = () => {
       </Flex>
       <Badge status='success' text={`Published at ${makeBeautyDate(post.publishedAt)}`} className='my-4' />
       <ContentPreview source={post.content} />
-      <Divider />
-      <Space>
+      <Space className='mt-4' wrap>
         <ToggleButton
           type='text'
           checkedIcon={<HeartFilled className='text-red-500' />}
@@ -137,6 +140,11 @@ const PostDetailPage: FC = () => {
           {post.comments} Comments
         </Button>
       </Space>
+      <Divider />
+      <Typography.Title level={4} className='mt-4'>
+        Other Posts
+      </Typography.Title>
+      <ListPost posts={POSTS.slice(0, 4)} oneColumn />
       <PostCommentDrawer comments={COMMENTS} open={openComment} onClose={toggleComment} />
     </div>
   )
