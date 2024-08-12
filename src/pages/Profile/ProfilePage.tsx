@@ -28,7 +28,7 @@ const ProfilePage: FC = () => {
   const { id } = useParams<{ id: string }>()
   const user = getUserInfoById(id!)
   return (
-    <div className='max-w-4xl mx-auto'>
+    <div className='mx-auto'>
       <ProfileHero author={user} />
       <div className='xl:flex xl:justify-end '>
         <ToggleFollow className='mb-4 w-full xl:w-auto xl:min-w-52' type='default' />
@@ -40,7 +40,7 @@ const ProfilePage: FC = () => {
         <Col span={24} xl={16}>
           <div className=''>
             <Typography.Title level={5}>Your blogs</Typography.Title>
-            <ListPost posts={POSTS} oneColumn />
+            <ListPost posts={POSTS} />
           </div>
         </Col>
       </Row>

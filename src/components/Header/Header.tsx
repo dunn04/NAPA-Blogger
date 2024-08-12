@@ -1,11 +1,12 @@
-import { Badge, Button, Input, Layout, MenuProps, Space, theme } from 'antd'
+import { Button, Input, Layout, MenuProps, Space, theme } from 'antd'
 import { FC, useMemo } from 'react'
 import { Logo } from '../Logo'
 import { Author, AvatarDropdown } from '../Avatar'
-import { NotificationOutlined, PlusOutlined } from '@ant-design/icons'
+import { PlusOutlined } from '@ant-design/icons'
 import { HEADER_AVATAR_DROPDOWN_ITEMS } from '@/constants'
 import { twMerge } from 'tailwind-merge'
 import { Link } from 'react-router-dom'
+import { NotifyPopover } from '../Notification'
 
 type Props = {
   className?: string
@@ -45,11 +46,7 @@ const Header: FC<Props> = ({ className }) => {
             Create
           </Button>
         </Link>
-        <Badge offset={[-10, 0]} count={99} size='small'>
-          <Button type='text'>
-            <NotificationOutlined />
-          </Button>
-        </Badge>
+        <NotifyPopover />
         <AvatarDropdown
           user={{
             avatar: 'https://avatars.githubusercontent.com/u/44036559?v=4',
