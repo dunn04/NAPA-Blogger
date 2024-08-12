@@ -12,11 +12,12 @@ import { ROUTE_ACTIONS } from '@/constants'
 type Props = {
   className?: string
   post: PostSimplify
+  nonImage?: boolean
 }
 
 const LIMIT_WORDS = 20
 
-const SimplifyPost: FC<Props> = ({ className, post }) => {
+const SimplifyPost: FC<Props> = ({ className, post, nonImage = false }) => {
   const { author } = post
   const content = useMemo(() => limitTextToWords(post.shortContent, LIMIT_WORDS), [post.shortContent])
   return (
@@ -41,7 +42,7 @@ const SimplifyPost: FC<Props> = ({ className, post }) => {
             </Typography.Title>
             <Typography.Text className='opacity-75'>{content}</Typography.Text>
           </div>
-          <div className='hidden lg:flex'>
+          <div className={twMerge('hidden lg:flex', nonImage && 'lg:hidden')}>
             <Image width={200} src={post.background} alt={post.title} className='object-cover rounded-md' />
           </div>
         </Flex>

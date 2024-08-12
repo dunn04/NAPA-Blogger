@@ -147,7 +147,7 @@ const PostDetailPage: FC = () => {
       <Typography.Title level={4} className='mt-4'>
         Other Posts
       </Typography.Title>
-      <ListPost posts={POSTS.slice(0, 4)} oneColumn />
+      <ListPost posts={POSTS.slice(0, 4)} postNonImage />
       <PostCommentDrawer comments={COMMENTS} open={openComment} onClose={toggleComment} />
     </div>
   )

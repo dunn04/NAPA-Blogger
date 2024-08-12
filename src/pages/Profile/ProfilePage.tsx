@@ -40,7 +40,7 @@ const ProfilePage: FC = () => {
         <Col span={24} xl={16}>
           <div className=''>
             <Typography.Title level={5}>Your blogs</Typography.Title>
-            <ListPost posts={POSTS} />
+            <ListPost posts={POSTS} postNonImage />
           </div>
         </Col>
       </Row>
