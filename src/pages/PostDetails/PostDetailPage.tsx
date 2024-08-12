@@ -5,10 +5,12 @@ import {
   ToggleButton,
   PostCommentDrawer,
   ContentPreview,
-  ListPost
+  ListPost,
+  Categories,
+  Tags
 } from '@/components'
 import { POSTS } from '@/constants'
-import { useScrollTop, useToggle } from '@/hooks'
+import { useToggle } from '@/hooks'
 import { CommentInstance, PostInstance } from '@/types'
 import { makeBeautyDate } from '@/utils'
 import { CommentOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons'
@@ -111,7 +113,6 @@ const COMMENTS: CommentInstance[] = Array.from({ length: 10 }, (_, i) => {
 })
 
 const PostDetailPage: FC = () => {
-  useScrollTop()
   const { id } = useParams<{ id: string }>()
   const post = getPostWithId(id || '1')
   const [openComment, toggleComment] = useToggle(false)
@@ -119,6 +120,7 @@ const PostDetailPage: FC = () => {
   return (
     <div className='max-w-4xl mx-auto'>
       <Typography.Title level={2}>{post.title}</Typography.Title>
+      <Categories categories={[post.category]} className='mb-6' title='' />
       <Flex justify='center' className='mt-2'>
         <Author author={post.author} avatarSize='large' />
         <Space className='ml-auto'>
@@ -140,6 +142,7 @@ const PostDetailPage: FC = () => {
           {post.comments} Comments
         </Button>
       </Space>
+      <Tags tags={post.tags} titleClassName='font-bold' className='w-full' />
       <Divider />
       <Typography.Title level={4} className='mt-4'>
         Other Posts

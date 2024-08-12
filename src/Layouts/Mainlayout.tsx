@@ -1,9 +1,11 @@
 import { Footer, Header, Sidebar } from '@/components'
+import { useScrollTop } from '@/hooks'
 import { Layout } from 'antd'
 import { FC } from 'react'
 import { Outlet } from 'react-router-dom'
 
 const MainLayout: FC = () => {
+  useScrollTop()
   return (
     <div>
       <Header className='h-16 z-[999] fixed left-0 right-0 top-0' />
