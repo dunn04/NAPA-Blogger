@@ -11,7 +11,11 @@ const AUTH = {
 
 const BLOGS = {
   POPULAR_POST: '/popular-blogs',
-  MY_BLOGS: '/my-blogs',
+  MY_BLOGS: {
+    ROOT: '/my-blogs',
+    DRAFT: '/my-blogs/draft',
+    PUBLISHED: '/my-blogs/public'
+  },
   SAVED_BLOGS: '/saved-blogs',
   CREATE_NEW_BLOG: '/create-new-blog',
   BLOG_DETAIL: {

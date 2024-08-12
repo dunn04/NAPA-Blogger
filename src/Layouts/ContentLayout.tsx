@@ -1,7 +1,7 @@
 import { Categories } from '@/components'
 import { Category } from '@/types'
 import { Col, Row, Typography } from 'antd'
-import { FC, PropsWithChildren, ReactNode } from 'react'
+import { FC, PropsWithChildren, ReactNode, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 type Props = {
@@ -12,15 +12,16 @@ type Props = {
 } & PropsWithChildren
 
 const Instance: FC<Props> = ({ children, className, title, description, rightPanel }) => {
+  const hasHeader = useMemo(() => title || description, [title, description])
   return (
     <div className={twMerge('', className)}>
-      <div className='mb-10'>
+      <div className={twMerge(hasHeader && 'mb-4 min-h-28')}>
         <Typography.Title level={4}>{title}</Typography.Title>
         <Typography.Text>{description}</Typography.Text>
       </div>
       <Row>
-        <Col md={24} xl={rightPanel ? 18 : 24}>
-          <div className='lg:pr-4'>{children}</div>
+        <Col md={24} xl={rightPanel ? 18 : 24} className='w-full'>
+          <div className='lg:pr-4 w-full'>{children}</div>
         </Col>
         {rightPanel && (
           <Col md={24} xl={6}>

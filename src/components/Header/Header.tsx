@@ -3,9 +3,9 @@ import { FC, useMemo } from 'react'
 import { Logo } from '../Logo'
 import { Author, AvatarDropdown } from '../Avatar'
 import { PlusOutlined } from '@ant-design/icons'
-import { HEADER_AVATAR_DROPDOWN_ITEMS } from '@/constants'
+import { HEADER_AVATAR_DROPDOWN_ITEMS, ROUTE_PATHS } from '@/constants'
 import { twMerge } from 'tailwind-merge'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { NotifyPopover } from '../Notification'
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 
 const Header: FC<Props> = ({ className }) => {
   const { token } = theme.useToken()
-
+  const navigate = useNavigate()
   const authorItem = useMemo<Required<MenuProps>['items'][number]>(() => {
     return {
       key: 'author',
@@ -30,6 +30,18 @@ const Header: FC<Props> = ({ className }) => {
       )
     }
   }, [])
+
+  const handleMenuClick = (key: string) => {
+    const map = {
+      [ROUTE_PATHS.MY_BLOGS.ROOT]: () => navigate(ROUTE_PATHS.MY_BLOGS.ROOT),
+      [ROUTE_PATHS.SETTINGS]: () => navigate(ROUTE_PATHS.SETTINGS),
+      [ROUTE_PATHS.LOGOUT]: () => {
+        // TODO handle logout
+      }
+    }
+
+    map[key]?.()
+  }
 
   return (
     <Layout.Header
@@ -60,7 +72,8 @@ const Header: FC<Props> = ({ className }) => {
                 type: 'divider'
               },
               ...HEADER_AVATAR_DROPDOWN_ITEMS
-            ]
+            ],
+            onClick: (info) => handleMenuClick(info.key)
           }}
         />
       </Space>

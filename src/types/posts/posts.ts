@@ -47,3 +47,8 @@ export type PostSimplify = Pick<
   background: string
   category: Category
 }
+
+export type PostSummary = Pick<
+  PostInstance,
+  'id' | 'title' | 'author' | 'updatedAt' | 'createdAt' | 'bookmarked' | 'status'
+>

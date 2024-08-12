@@ -4,7 +4,7 @@ import { HomeOutlined, WifiOutlined } from '@ant-design/icons'
 
 const HEADER_AVATAR_DROPDOWN_ITEMS: Required<MenuProps>['items'] = [
   {
-    key: ROUTE_PATHS.MY_BLOGS,
+    key: ROUTE_PATHS.MY_BLOGS.ROOT,
     label: 'My blogs'
   },
   {
