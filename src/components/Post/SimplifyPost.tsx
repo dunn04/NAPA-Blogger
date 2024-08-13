@@ -40,7 +40,7 @@ const SimplifyPost: FC<Props> = ({ className, post, nonImage = false }) => {
                 {post.title}
               </Link>
             </Typography.Title>
-            <Typography.Text className='opacity-75'>{content}</Typography.Text>
+            <Typography.Text type='secondary'>{content}</Typography.Text>
           </div>
           <div className={twMerge('hidden lg:flex', nonImage && 'lg:hidden')}>
             <Image width={200} src={post.background} alt={post.title} className='object-cover rounded-md' />

@@ -14,7 +14,8 @@ const BLOGS = {
   MY_BLOGS: {
     ROOT: '/my-blogs',
     DRAFT: '/my-blogs/draft',
-    PUBLISHED: '/my-blogs/public'
+    PUBLISHED: '/my-blogs/public',
+    EDIT: '/my-blogs/edit/:id'
   },
   SAVED_BLOGS: '/saved-blogs',
   CREATE_NEW_BLOG: '/create-new-blog',
@@ -45,6 +46,7 @@ const ROUTE_PATHS = {
 const ROUTE_ACTIONS = {
   BLOG_DETAIL_WITH_ID: (id: string) => `${BLOGS.BLOG_DETAIL.BASE}/${id}`,
   BLOG_WITH_TAG: (tag: string) => `${BLOGS.BLOG_TAGS.BASE}/${tag}`,
+  BLOG_EDIT_WITH_ID: (id: string) => `${BLOGS.MY_BLOGS.EDIT.replace(':id', id)}`,
   USER_PROFILE_WITH_ID: (id: string) => `${USER.PROFILE.BASE}/${id}`
 }
 

@@ -9,9 +9,9 @@ import {
   Categories,
   Tags
 } from '@/components'
-import { POSTS } from '@/constants'
+import { COMMENTS, POSTS } from '@/constants'
 import { useToggle } from '@/hooks'
-import { CommentInstance, PostInstance } from '@/types'
+import { PostInstance } from '@/types'
 import { makeBeautyDate } from '@/utils'
 import { CommentOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons'
 import { Badge, Button, Divider, Flex, Space, Typography } from 'antd'
@@ -78,40 +78,6 @@ const getPostWithId = (id: string): PostInstance => ({
   ],
   updatedAt: Date.now()
 })
-
-// Fake comments
-const COMMENT: CommentInstance = {
-  id: 1,
-  author: {
-    avatar: 'https://i.pravatar.cc/150?img=2',
-    id: 2,
-    name: 'Jane Doe'
-  },
-  content:
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo incidunt atque ex magni consequuntur non quisquam sit, fugiat tenetur error voluptates sed ad perferendis natus reprehenderit veniam est minus neque.',
-  createdAt: Date.now(),
-  postId: 1,
-  status: 'published',
-  updatedAt: Date.now(),
-  replies: [] as CommentInstance[]
-}
-const COMMENTS: CommentInstance[] = Array.from({ length: 10 }, (_, i) => {
-  const comment = { ...COMMENT }
-  const repliesLength = Math.floor(Math.random() * 15)
-
-  if (repliesLength > 0) {
-    comment.replies = Array.from({ length: repliesLength }, (_, i) => {
-      const reply: CommentInstance = {
-        ...COMMENT,
-        id: i + 2
-      }
-      return reply
-    })
-  }
-  comment.id = i + 1
-  return comment
-})
-
 const PostDetailPage: FC = () => {
   const { id } = useParams<{ id: string }>()
   const post = getPostWithId(id || '1')

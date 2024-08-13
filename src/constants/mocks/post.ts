@@ -1,4 +1,4 @@
-import { PostSimplify } from '@/types'
+import { PostSimplify, PostSummary } from '@/types'
 
 const POST: PostSimplify = {
   author: {
@@ -26,4 +26,16 @@ const POSTS = Array.from({ length: 10 }, (_, i) => ({
   id: i + 1
 }))
 
-export { POSTS }
+const POST_SUMMARYS: PostSummary[] = POSTS.map((post) => {
+  return {
+    id: post.id,
+    author: post.author,
+    bookmarked: post.bookmarked,
+    createdAt: post.publishedAt,
+    status: 'draft',
+    title: post.title + 'Lorem ipsum dolor sit amet consectetur adipiscing elit',
+    updatedAt: post.publishedAt
+  }
+})
+
+export { POSTS, POST_SUMMARYS }

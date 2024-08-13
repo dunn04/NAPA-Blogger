@@ -14,7 +14,7 @@ const Footer: FC<Props> = () => {
       }}
     >
       <div className='text-center'>
-        <p>© 2021 Dunn - All rights reserved</p>
+        <p>© 2024 Dunn - All rights reserved</p>
       </div>
     </Layout.Footer>
   )
