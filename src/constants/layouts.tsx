@@ -1,6 +1,6 @@
 import { MenuProps } from 'antd'
 import { ROUTE_PATHS } from './routes'
-import { HomeOutlined, WifiOutlined } from '@ant-design/icons'
+import { HomeOutlined, SettingOutlined, WifiOutlined } from '@ant-design/icons'
 
 const HEADER_AVATAR_DROPDOWN_ITEMS: Required<MenuProps>['items'] = [
   {
@@ -16,7 +16,7 @@ const HEADER_AVATAR_DROPDOWN_ITEMS: Required<MenuProps>['items'] = [
     label: 'Create new blog'
   },
   {
-    key: ROUTE_PATHS.SETTINGS,
+    key: ROUTE_PATHS.SETTINGS.ROOT,
     label: 'Settings'
   },
   {
@@ -39,6 +39,11 @@ const SIDE_BAR_MENU_ITEMS: MenuProps['items'] = [
     key: ROUTE_PATHS.POPULAR_POST,
     label: 'Popular post',
     icon: <WifiOutlined />
+  },
+  {
+    key: ROUTE_PATHS.SETTINGS.ROOT,
+    label: 'Settings',
+    icon: <SettingOutlined />
   }
 ]
 

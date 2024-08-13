@@ -34,7 +34,7 @@ const Header: FC<Props> = ({ className }) => {
   const handleMenuClick = (key: string) => {
     const map = {
       [ROUTE_PATHS.MY_BLOGS.ROOT]: () => navigate(ROUTE_PATHS.MY_BLOGS.ROOT),
-      [ROUTE_PATHS.SETTINGS]: () => navigate(ROUTE_PATHS.SETTINGS),
+      [ROUTE_PATHS.SETTINGS.ROOT]: () => navigate(ROUTE_PATHS.SETTINGS.ROOT),
       [ROUTE_PATHS.MY_BLOGS.SAVED]: () => navigate(ROUTE_PATHS.MY_BLOGS.SAVED),
       [ROUTE_PATHS.LOGOUT]: () => {
         // TODO handle logout

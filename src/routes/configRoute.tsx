@@ -8,7 +8,10 @@ import {
   PostDetailPage,
   ProfilePage,
   PublishedBlog,
-  SavedBlogs
+  SavedBlogs,
+  SettingWrapper,
+  UserAuthentication,
+  UserProfile
 } from '@/pages'
 import { RouteObject } from 'react-router-dom'
 import { WrapperRoute } from './WrapperRoute'
@@ -32,7 +35,7 @@ const configRoute: RouteObject[] = [
       },
       {
         path: ROUTE_PATHS.MY_BLOGS.ROOT,
-        element: <WrapperRoute element={<MyBlogWrapper />} />,
+        element: <WrapperRoute element={<MyBlogWrapper />} auth />,
         children: [
           {
             path: ROUTE_PATHS.MY_BLOGS.DRAFT,
@@ -45,6 +48,20 @@ const configRoute: RouteObject[] = [
           {
             path: ROUTE_PATHS.MY_BLOGS.SAVED,
             element: <SavedBlogs />
+          }
+        ]
+      },
+      {
+        path: ROUTE_PATHS.SETTINGS.ROOT,
+        element: <WrapperRoute element={<SettingWrapper />} auth />,
+        children: [
+          {
+            path: ROUTE_PATHS.SETTINGS.PROFILE,
+            element: <UserProfile />
+          },
+          {
+            path: ROUTE_PATHS.SETTINGS.AUTHENTICATION,
+            element: <UserAuthentication />
           }
         ]
       }

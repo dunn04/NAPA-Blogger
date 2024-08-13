@@ -1,6 +1,10 @@
 const COMMONS = {
   HOME: '/',
-  SETTINGS: '/settings'
+  SETTINGS: {
+    ROOT: '/settings',
+    PROFILE: '/settings/profile',
+    AUTHENTICATION: '/settings/authentication'
+  }
 }
 
 const AUTH = {
