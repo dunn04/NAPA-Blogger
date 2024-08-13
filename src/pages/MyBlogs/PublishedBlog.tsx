@@ -1,7 +1,6 @@
 import { FC, useCallback, useEffect } from 'react'
 import { useWrapper } from './useWrapper'
 import { ListPostCompact, PostCompactActions } from '@/components'
-import { POST_SUMMARYS } from '@/constants'
 
 const PublishedBlog: FC = () => {
   const action = useWrapper()
