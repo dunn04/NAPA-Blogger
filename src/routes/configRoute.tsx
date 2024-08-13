@@ -1,6 +1,15 @@
 import { ROUTE_PATHS } from '@/constants'
 import { MainLayout } from '@/Layouts'
-import { DraftBlogs, HomePage, MyBlogWrapper, NotFoundPage, PostDetailPage, ProfilePage, PublishedBlog } from '@/pages'
+import {
+  DraftBlogs,
+  HomePage,
+  MyBlogWrapper,
+  NotFoundPage,
+  PostDetailPage,
+  ProfilePage,
+  PublishedBlog,
+  SavedBlogs
+} from '@/pages'
 import { RouteObject } from 'react-router-dom'
 import { WrapperRoute } from './WrapperRoute'
 
@@ -32,6 +41,10 @@ const configRoute: RouteObject[] = [
           {
             path: ROUTE_PATHS.MY_BLOGS.PUBLISHED,
             element: <PublishedBlog />
+          },
+          {
+            path: ROUTE_PATHS.MY_BLOGS.SAVED,
+            element: <SavedBlogs />
           }
         ]
       }

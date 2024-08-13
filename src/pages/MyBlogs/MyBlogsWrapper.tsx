@@ -35,6 +35,11 @@ const MyBlogWrapper: FC = () => {
       key: ROUTE_PATHS.MY_BLOGS.PUBLISHED,
       label: 'Published',
       children: <Outlet />
+    },
+    {
+      key: ROUTE_PATHS.MY_BLOGS.SAVED,
+      label: 'Saved',
+      children: <Outlet />
     }
   ]
 

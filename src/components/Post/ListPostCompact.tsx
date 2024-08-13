@@ -21,11 +21,19 @@ const ListPostCompact: FC<Props> = ({ posts, className, postProps }) => {
     navigate(ROUTE_PATHS.CREATE_NEW_BLOG)
   }
 
+  const gotoHome = () => {
+    navigate(ROUTE_PATHS.HOME)
+  }
+
   if (posts.length === 0)
     return (
       <Empty description={<Typography.Text type='secondary'>Not found any post.</Typography.Text>}>
-        <Button type='primary' onClick={goToCreatePost}>
+        <Button type='link' onClick={goToCreatePost}>
           Create new post
+        </Button>
+        <Typography.Text type='secondary'>or</Typography.Text>
+        <Button type='link' onClick={gotoHome}>
+          View other posts
         </Button>
       </Empty>
     )

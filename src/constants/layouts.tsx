@@ -8,7 +8,7 @@ const HEADER_AVATAR_DROPDOWN_ITEMS: Required<MenuProps>['items'] = [
     label: 'My blogs'
   },
   {
-    key: ROUTE_PATHS.SAVED_BLOGS,
+    key: ROUTE_PATHS.MY_BLOGS.SAVED,
     label: 'Saved blogs'
   },
   {

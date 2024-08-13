@@ -15,9 +15,9 @@ const BLOGS = {
     ROOT: '/my-blogs',
     DRAFT: '/my-blogs/draft',
     PUBLISHED: '/my-blogs/public',
-    EDIT: '/my-blogs/edit/:id'
+    EDIT: '/my-blogs/edit/:id',
+    SAVED: '/my-blogs/saved'
   },
-  SAVED_BLOGS: '/saved-blogs',
   CREATE_NEW_BLOG: '/create-new-blog',
   BLOG_DETAIL: {
     BASE: '/blogs/detail',
