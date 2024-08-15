@@ -1,6 +1,7 @@
 import { FC, useCallback, useEffect } from 'react'
 import { useWrapper } from './useWrapper'
 import { ListPostCompact, PostCompactActions } from '@/components'
+import { ROUTE_ACTIONS } from '@/constants'
 
 const PublishedBlog: FC = () => {
   const action = useWrapper()
@@ -16,7 +17,9 @@ const PublishedBlog: FC = () => {
     <ListPostCompact
       posts={[]}
       postProps={{
-        extra: (post) => <PostCompactActions post={post} onDelete={handleDelete} />
+        extra: (post) => <PostCompactActions post={post} onDelete={handleDelete} />,
+
+        to: (post) => ROUTE_ACTIONS.BLOG_DETAIL_WITH_ID(`${post.id}`)
       }}
     />
   )

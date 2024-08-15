@@ -1,5 +1,5 @@
 import { ListPostCompact, PostCompactActions } from '@/components'
-import { POST_SUMMARYS } from '@/constants'
+import { POST_SUMMARYS, ROUTE_ACTIONS } from '@/constants'
 import { FC, useCallback, useEffect } from 'react'
 import { useWrapper } from './useWrapper'
 
@@ -16,7 +16,8 @@ const SavedBlogs: FC = () => {
       posts={POST_SUMMARYS}
       postProps={{
         extra: (post) => <PostCompactActions post={post} onDelete={handleDelete} />,
-        withAuthor: true
+        withAuthor: true,
+        to: (post) => ROUTE_ACTIONS.BLOG_DETAIL_WITH_ID(`${post.id}`)
       }}
     />
   )

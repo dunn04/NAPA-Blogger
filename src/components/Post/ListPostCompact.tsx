@@ -9,8 +9,9 @@ import { ROUTE_PATHS } from '@/constants'
 type Props = {
   className?: string
   posts: PostSummary[]
-  postProps?: Omit<PostCompactProps, 'post' | 'extra'> & {
+  postProps?: Omit<PostCompactProps, 'post' | 'extra' | 'to'> & {
     extra?: (post: PostSummary) => React.ReactNode
+    to?: (post: PostSummary) => string
   }
 }
 
@@ -51,7 +52,12 @@ const ListPostCompact: FC<Props> = ({ posts, className, postProps }) => {
       dataSource={posts}
       renderItem={(post) => (
         <List.Item>
-          <PostCompact post={post} {...postProps} extra={postProps?.extra && postProps.extra?.(post)} />
+          <PostCompact
+            post={post}
+            {...postProps}
+            extra={postProps?.extra && postProps.extra?.(post)}
+            to={postProps?.to?.(post)}
+          />
         </List.Item>
       )}
       rowKey='id'

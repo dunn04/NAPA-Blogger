@@ -4,6 +4,10 @@ const COMMONS = {
     ROOT: '/settings',
     PROFILE: '/settings/profile',
     AUTHENTICATION: '/settings/authentication'
+  },
+  TAGS: {
+    ROOT: '/tags',
+    WITH_TAG: '/tags/:tag'
   }
 }
 
@@ -51,7 +55,8 @@ const ROUTE_ACTIONS = {
   BLOG_DETAIL_WITH_ID: (id: string) => `${BLOGS.BLOG_DETAIL.BASE}/${id}`,
   BLOG_WITH_TAG: (tag: string) => `${BLOGS.BLOG_TAGS.BASE}/${tag}`,
   BLOG_EDIT_WITH_ID: (id: string) => `${BLOGS.MY_BLOGS.EDIT.replace(':id', id)}`,
-  USER_PROFILE_WITH_ID: (id: string) => `${USER.PROFILE.BASE}/${id}`
+  USER_PROFILE_WITH_ID: (id: string) => `${USER.PROFILE.BASE}/${id}`,
+  TAGS_WITH_TAG: (tag: string) => `${COMMONS.TAGS.WITH_TAG.replace(':tag', tag)}`
 }
 
 export { ROUTE_PATHS, ROUTE_ACTIONS }

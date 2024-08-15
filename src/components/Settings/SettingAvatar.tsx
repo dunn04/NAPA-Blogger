@@ -31,7 +31,14 @@ const SettingAvatar: FC<Props> = ({ value, src, onChange, ...props }) => {
 
   const AvatarConent = (
     <div className='text-center'>
-      <Avatar src={innerSrc} alt='avatar' size={240} className='cursor-pointer' onClick={handleOpenUpload} />
+      <Avatar
+        src={innerSrc}
+        alt='avatar'
+        size={240}
+        data-content='Change avatar'
+        className='cursor-pointer relative after:absolute after:top-0 after:left-0 after:bg-black/30 after:w-full after:h-full after:invisible  hover:after:visible transition-all after:content-[attr(data-content)] after:flex after:justify-center after:items-center'
+        onClick={handleOpenUpload}
+      ></Avatar>
       <input ref={inputRef} type='file' className='hidden' accept='image/*' onChange={handleUpload} />
     </div>
   )
