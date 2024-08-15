@@ -52,3 +52,7 @@ export type PostSummary = Pick<
   PostInstance,
   'id' | 'title' | 'author' | 'updatedAt' | 'createdAt' | 'bookmarked' | 'status'
 >
+
+export type PostSearchItem = Pick<PostInstance, 'id' | 'title' | 'shortContent' | 'publishedAt' | 'author'> & {
+  background: string
+}

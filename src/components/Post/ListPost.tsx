@@ -22,7 +22,7 @@ const ListPost: FC<Props> = ({ posts, className, oneColumn = false, postNonImage
       }}
       dataSource={posts}
       renderItem={(post) => (
-        <List.Item key={post.id}>
+        <List.Item>
           <SimplifyPost post={post} nonImage={postNonImage} />
         </List.Item>
       )}
