@@ -1,6 +1,7 @@
 import { ROUTE_PATHS } from '@/constants'
 import { MainLayout } from '@/Layouts'
 import {
+  CreateBlogPage,
   DraftBlogs,
   HomePage,
   MyBlogWrapper,
@@ -64,6 +65,10 @@ const configRoute: RouteObject[] = [
             element: <UserAuthentication />
           }
         ]
+      },
+      {
+        path: ROUTE_PATHS.CREATE_NEW_BLOG,
+        element: <WrapperRoute element={<CreateBlogPage />} auth />
       }
     ]
   },
