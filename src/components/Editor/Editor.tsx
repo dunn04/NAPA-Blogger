@@ -58,7 +58,7 @@ const Editor: FC<Props> = ({ className, onUpload, value, onChange, ...textAreaPr
           sm={24}
           xs={24}
           lg={fullScreen ? 12 : 24}
-          className={twMerge(fullScreen && 'sticky top-0 lg:h-screen z-10')}
+          className={twMerge(fullScreen && 'sticky top-0 lg:h-screen z-10 py-4 lg:py-0')}
         >
           <div
             style={{

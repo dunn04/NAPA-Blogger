@@ -14,7 +14,6 @@ type Props = {
   comment: CommentInstance
   withAction?: boolean
 }
-// TODO: Implement reply functionality
 const Comment: FC<Props> = ({ className, comment, withAction = true }) => {
   return (
     <div className={className}>

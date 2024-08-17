@@ -38,119 +38,43 @@ const PostForm: FC<Props> = ({ className }) => {
   const tagOptions = [
     {
       label: 'React',
-      value: 1
+      value: '1'
     },
     {
       label: 'Vue',
-      value: 2
+      value: '2'
     },
     {
       label: 'Angular',
-      value: 3
+      value: '3'
     },
     {
       label: 'Svelte',
-      value: 4
+      value: '4'
     },
     {
       label: 'Next.js',
-      value: 5
+      value: '5'
     },
     {
       label: 'Nuxt.js',
-      value: 6
+      value: '6'
     },
     {
       label: 'Gatsby',
-      value: 7
+      value: '7'
     },
     {
       label: 'Gridsome',
-      value: 8
+      value: '8'
     },
     {
       label: 'React Native',
-      value: 9
+      value: '9'
     },
     {
       label: 'Flutter',
-      value: 10
-    },
-    {
-      label: 'Ionic',
-      value: 11
-    },
-    {
-      label: 'Cordova',
-      value: 12
-    },
-    {
-      label: 'Capacitor',
-      value: 13
-    },
-    {
-      label: 'Electron',
-      value: 14
-    },
-    {
-      label: 'NW.js',
-      value: 15
-    },
-    {
-      label: 'Node.js',
-      value: 16
-    },
-    {
-      label: 'Express',
-      value: 17
-    },
-    {
-      label: 'Koa',
-      value: 18
-    },
-    {
-      label: 'Sails',
-      value: 19
-    },
-    {
-      label: 'Meteor',
-      value: 20
-    },
-    {
-      label: 'NestJS',
-      value: 21
-    },
-    {
-      label: 'AdonisJS',
-      value: 22
-    },
-    {
-      label: 'Feathers',
-      value: 23
-    },
-    {
-      label: 'LoopBack',
-      value: 24
-    },
-    {
-      label: 'Strapi',
-      value: 25
-    },
-    {
-      label: 'KeystoneJS',
-      value: 26
-    },
-    {
-      label: 'Ghost',
-      value: 27
-    },
-    {
-      label: 'WordPress',
-      value: 28
-    },
-    {
-      label: 'Joomla',
-      value: 29
+      value: '10'
     }
   ]
 

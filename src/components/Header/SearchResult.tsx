@@ -1,8 +1,7 @@
 import { PostSearchItem } from '@/types'
-import { List, Space, Typography } from 'antd'
+import { Avatar, List, Space, Typography } from 'antd'
 import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { Author } from '../Avatar'
 import { limitTextToWords } from '@/utils'
 import { Link } from 'react-router-dom'
 import { ROUTE_ACTIONS } from '@/constants'
@@ -26,7 +25,7 @@ const SearchResult = forwardRef<HTMLDivElement, Props>(({ className, result, onM
                 className='w-full'
                 title={item.title}
                 description={limitTextToWords(item.shortContent, 10)}
-                avatar={<Author author={item.author} onlyAvatar avatarSize='large' />}
+                avatar={<Avatar size='large' src={item.author.avatar} alt={item.author.name} />}
               />
             </Link>
           </List.Item>
