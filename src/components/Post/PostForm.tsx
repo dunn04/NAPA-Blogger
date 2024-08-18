@@ -1,4 +1,4 @@
-import { Button, Form, Input, Select } from 'antd'
+import { Button, DatePicker, Form, Input, Select } from 'antd'
 import { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Editor } from '../Editor'
@@ -88,6 +88,9 @@ const PostForm: FC<Props> = ({ className }) => {
       </Form.Item>
       <Form.Item label='Tags'>
         <Select mode='tags' options={tagOptions} />
+      </Form.Item>
+      <Form.Item label='Published at'>
+        <DatePicker className='w-full' />
       </Form.Item>
       <Form.Item label='Content'>
         <Editor />
