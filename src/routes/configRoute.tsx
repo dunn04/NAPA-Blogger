@@ -6,6 +6,7 @@ import {
   HomePage,
   MyBlogWrapper,
   NotFoundPage,
+  PopularPostPage,
   PostDetailPage,
   ProfilePage,
   PublishedBlog,
@@ -24,7 +25,11 @@ const configRoute: RouteObject[] = [
     children: [
       {
         path: ROUTE_PATHS.HOME,
-        element: <WrapperRoute element={<HomePage />} auth />
+        element: <WrapperRoute element={<HomePage />} />
+      },
+      {
+        path: ROUTE_PATHS.POPULAR_POST,
+        element: <WrapperRoute element={<PopularPostPage />} />
       },
       {
         path: ROUTE_PATHS.BLOG_DETAIL.WITH_ID,
