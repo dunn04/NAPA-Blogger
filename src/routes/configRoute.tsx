@@ -1,9 +1,11 @@
 import { ROUTE_PATHS } from '@/constants'
 import { MainLayout } from '@/Layouts'
 import {
+  AuthWrapper,
   CreateBlogPage,
   DraftBlogs,
   HomePage,
+  LoginPage,
   MyBlogWrapper,
   NotFoundPage,
   PopularPostPage,
@@ -12,6 +14,7 @@ import {
   PublishedBlog,
   SavedBlogs,
   SettingWrapper,
+  SignUpPage,
   TagsPage,
   UserAuthentication,
   UserProfile
@@ -79,6 +82,19 @@ const configRoute: RouteObject[] = [
       {
         path: ROUTE_PATHS.TAGS.ROOT,
         element: <WrapperRoute element={<TagsPage />} />
+      }
+    ]
+  },
+  {
+    element: <AuthWrapper />,
+    children: [
+      {
+        path: ROUTE_PATHS.LOGIN,
+        element: <LoginPage />
+      },
+      {
+        path: ROUTE_PATHS.SIGNUP,
+        element: <SignUpPage />
       }
     ]
   },

@@ -13,7 +13,7 @@ const COMMONS = {
 
 const AUTH = {
   LOGIN: '/login',
-  SIGNUP: '/signup',
+  SIGNUP: '/sign-up',
   LOGOUT: '/logout'
 }
 
