@@ -8,6 +8,7 @@ import { twMerge } from 'tailwind-merge'
 import { Link, useNavigate } from 'react-router-dom'
 import { NotifyPopover } from '../Notification'
 import { Search } from './Search'
+import { BREAKPOINTS, useBreakpoint } from '@/hooks'
 
 type Props = {
   className?: string
@@ -16,6 +17,7 @@ type Props = {
 const Header: FC<Props> = ({ className }) => {
   const { token } = theme.useToken()
   const navigate = useNavigate()
+  const { width } = useBreakpoint()
   const authorItem = useMemo<Required<MenuProps>['items'][number]>(() => {
     return {
       key: 'author',
@@ -61,7 +63,7 @@ const Header: FC<Props> = ({ className }) => {
             Create
           </Button>
         </Link>
-        <NotifyPopover />
+        <NotifyPopover placement={width > BREAKPOINTS.lg ? 'bottomLeft' : 'bottom'} />
         <AvatarDropdown
           user={{
             avatar: 'https://avatars.githubusercontent.com/u/44036559?v=4',
