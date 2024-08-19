@@ -12,6 +12,7 @@ import {
   PublishedBlog,
   SavedBlogs,
   SettingWrapper,
+  TagsPage,
   UserAuthentication,
   UserProfile
 } from '@/pages'
@@ -74,6 +75,10 @@ const configRoute: RouteObject[] = [
       {
         path: ROUTE_PATHS.CREATE_NEW_BLOG,
         element: <WrapperRoute element={<CreateBlogPage />} auth />
+      },
+      {
+        path: ROUTE_PATHS.TAGS.ROOT,
+        element: <WrapperRoute element={<TagsPage />} />
       }
     ]
   },
