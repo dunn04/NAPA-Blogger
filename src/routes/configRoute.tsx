@@ -1,8 +1,9 @@
 import { ROUTE_PATHS } from '@/constants'
-import { MainLayout } from '@/Layouts'
+import { AdminLayout, MainLayout } from '@/Layouts'
 import {
   AuthWrapper,
   CreateBlogPage,
+  DashboardPage,
   DraftBlogs,
   HomePage,
   LoginPage,
@@ -95,6 +96,15 @@ const configRoute: RouteObject[] = [
       {
         path: ROUTE_PATHS.SIGNUP,
         element: <SignUpPage />
+      }
+    ]
+  },
+  {
+    element: <AdminLayout />,
+    children: [
+      {
+        path: ROUTE_PATHS.DASHBOARD,
+        element: <DashboardPage />
       }
     ]
   },

@@ -36,8 +36,9 @@ const TagsPage: FC = () => {
     <ContentLayout
       title='All Tags'
       description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultricies ultricies. Nullam nec purus ut'
+      className='max-w-4xl mx-auto'
     >
-      <Tags className='max-w-4xl mx-auto' tags={TAGS} />
+      <Tags tags={TAGS} />
     </ContentLayout>
   )
 }

@@ -21,4 +21,8 @@ export type UserInfo = Omit<User, 'password'> &
     followers: number
   }
 
-export type Author = Pick<UserInfo, 'id' | 'name' | 'avatar'>
+export type Author = Pick<UserInfo, 'id' | 'name' | 'avatar'> & {
+  bio?: string
+}
+
+export type AuthorWithBio = Author & Pick<UserProfile, 'bio'>

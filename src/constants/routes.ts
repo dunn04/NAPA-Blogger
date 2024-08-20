@@ -44,11 +44,16 @@ const USER = {
   }
 }
 
+const ADMIN = {
+  DASHBOARD: '/dashboard'
+}
+
 const ROUTE_PATHS = {
   ...COMMONS,
   ...AUTH,
   ...BLOGS,
-  ...USER
+  ...USER,
+  ...ADMIN
 }
 
 const ROUTE_ACTIONS = {
