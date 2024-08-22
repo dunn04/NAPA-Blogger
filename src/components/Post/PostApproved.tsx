@@ -21,7 +21,12 @@ const PostApproved: FC<Props> = ({ className, post, ...props }) => {
   }, [])
 
   return (
-    <Card className={twMerge('', className)} actions={Actions} title={<Author author={post.author} />} {...props}>
+    <Card
+      className={twMerge('transition-all', className)}
+      actions={Actions}
+      title={<Author author={post.author} />}
+      {...props}
+    >
       <Space direction='vertical'>
         <Typography.Title level={5}>{post.title}</Typography.Title>
         <Typography.Paragraph>{limitTextToWords(post.shortContent, 20)}</Typography.Paragraph>

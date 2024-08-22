@@ -1,8 +1,9 @@
 import { SelectAllList, PostApproved } from '@/components'
 import { POSTS } from '@/constants'
 import { CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons'
-import { Col, Space, Button, Row } from 'antd'
+import { Col, Space, Button, Row, Popconfirm } from 'antd'
 import { FC } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
   className?: string
@@ -16,11 +17,16 @@ const ApprovedPosts: FC<Props> = ({ className }) => {
   )
   return (
     <SelectAllList
+      actionSticky
       className={className}
       dataSource={POSTS}
-      renderItem={(post) => (
+      renderItem={(post, isChecked) => (
         <Col key={post.id} xs={24} sm={24} md={12} xl={8}>
-          <PostApproved post={post} extra={<SelectAllList.Checkbox item={post} />} />
+          <PostApproved
+            className={twMerge(isChecked && 'border-ant-primary')}
+            post={post}
+            extra={<SelectAllList.Checkbox item={post} />}
+          />
         </Col>
       )}
       wrapper={Wrapper}
@@ -29,9 +35,11 @@ const ApprovedPosts: FC<Props> = ({ className }) => {
           <Button type='text'>
             <CheckCircleOutlined />
           </Button>
-          <Button type='text'>
-            <DeleteOutlined />
-          </Button>
+          <Popconfirm title='Are you want sure to delete all?'>
+            <Button type='text'>
+              <DeleteOutlined />
+            </Button>
+          </Popconfirm>
         </Space>
       }
     />

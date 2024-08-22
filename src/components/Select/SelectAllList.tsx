@@ -1,5 +1,5 @@
 import { useSelectAll } from '@/hooks'
-import { Checkbox, Dropdown, Space } from 'antd'
+import { Checkbox, Dropdown, Empty, Space, theme } from 'antd'
 import { createContext, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { SelectCheckbox } from './SelectCheckbox'
@@ -7,17 +7,22 @@ import { SelectCheckbox } from './SelectCheckbox'
 type Props<T> = {
   className?: string
   dataSource?: T[]
-  renderItem: (item: T, index: number) => JSX.Element
+  renderItem: (item: T, isChecked: boolean, index: number) => JSX.Element
   wrapper?: (children: JSX.Element | JSX.Element[]) => JSX.Element
   extra?: ReactNode
+  actionSticky?: boolean
 }
 
-function Instance<T>({ dataSource = [], className, renderItem, wrapper, extra }: Props<T>) {
+function Instance<T>({ dataSource = [], className, renderItem, wrapper, extra, actionSticky = false }: Props<T>) {
   const { isSelectAllIndeterminate, isSelectAll, toggleSelectAll, toggle, isSelected, selected } =
     useSelectAll(dataSource)
+  const { token } = theme.useToken()
 
   const isChecked = dataSource.length > 0 && isSelectAll
   const showExtra = extra && selected.length > 0
+
+  if (dataSource.length === 0) return <Empty />
+
   return (
     <SelectAllListContext.Provider
       value={
@@ -28,7 +33,12 @@ function Instance<T>({ dataSource = [], className, renderItem, wrapper, extra }:
       }
     >
       <div className={twMerge(className)}>
-        <Space>
+        <Space
+          className={twMerge(actionSticky && 'sticky top-16 z-[999] rounded-sm w-full')}
+          style={{
+            backgroundColor: token.colorBgContainer
+          }}
+        >
           <Dropdown.Button
             trigger={['click']}
             menu={{
@@ -39,7 +49,9 @@ function Instance<T>({ dataSource = [], className, renderItem, wrapper, extra }:
           </Dropdown.Button>
           {showExtra && extra}
         </Space>
-        {wrapper ? wrapper(dataSource.map(renderItem)) : dataSource.map(renderItem)}
+        {wrapper
+          ? wrapper(dataSource.map((item, index) => renderItem(item, isChecked, index)))
+          : dataSource.map((item, index) => renderItem(item, isChecked, index))}
       </div>
     </SelectAllListContext.Provider>
   )
