@@ -45,8 +45,8 @@ function Instance<T>({ dataSource = [], className, renderItem, wrapper, extra, a
           {showExtra && extra}
         </Space>
         {wrapper
-          ? wrapper(dataSource.map((item, index) => renderItem(item, isChecked, index)))
-          : dataSource.map((item, index) => renderItem(item, isChecked, index))}
+          ? wrapper(dataSource.map((item, index) => renderItem(item, isSelected(item), index)))
+          : dataSource.map((item, index) => renderItem(item, isSelected(item), index))}
       </div>
     </SelectAllListContext.Provider>
   )
