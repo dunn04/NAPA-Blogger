@@ -107,7 +107,7 @@ const PostForm: FC<Props> = ({ className, initialValues }) => {
       </Form.Item>
       <Form.Item>
         <Button block type='primary' htmlType='submit'>
-          Upload
+          Submit
         </Button>
       </Form.Item>
     </Form>

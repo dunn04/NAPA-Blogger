@@ -1,3 +1,4 @@
+import { ROUTE_ACTIONS } from '@/constants'
 import { Tag } from '@/types'
 import { Badge, Flex, Typography } from 'antd'
 import { FC } from 'react'
@@ -17,7 +18,7 @@ const Tags: FC<Props> = ({ className, tags, title = 'Tags', titleClassName }) =>
       <Typography.Text className={twMerge('uppercase w-full', titleClassName)}>{title}</Typography.Text>
       <Flex gap={4} wrap className='mt-4'>
         {tags.map((tag) => (
-          <Link to='' key={tag.id}>
+          <Link to={ROUTE_ACTIONS.BLOG_WITH_FILTER(tag.id, tag.name)} key={tag.id}>
             <Badge count={tag.name} color={tag.color} className='cursor-pointer' />
           </Link>
         ))}

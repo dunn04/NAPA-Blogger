@@ -1,6 +1,7 @@
-import { Tags } from '@/components'
+import { Categories, Tags } from '@/components'
 import { ContentLayout } from '@/Layouts'
-import { Tag } from '@/types'
+import { Category, Tag } from '@/types'
+import { Col, Row } from 'antd'
 import { FC } from 'react'
 
 const TAGS: Tag[] = [
@@ -31,6 +32,24 @@ const TAGS: Tag[] = [
   }
 ]
 
+const CATEGORIES: Category[] = [
+  {
+    id: 1,
+    name: 'Technology'
+  },
+  {
+    id: 2,
+    name: 'Design'
+  },
+  {
+    id: 3,
+    name: 'Programming'
+  },
+  {
+    id: 4,
+    name: 'Life'
+  }
+]
 const TagsPage: FC = () => {
   return (
     <ContentLayout
@@ -38,7 +57,14 @@ const TagsPage: FC = () => {
       description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut libero ultricies ultricies. Nullam nec purus ut'
       className='max-w-4xl mx-auto'
     >
-      <Tags tags={TAGS} />
+      <Row gutter={[16, 16]}>
+        <Col xl={12}>
+          <Tags tags={TAGS} />
+        </Col>
+        <Col xl={12}>
+          <Categories categories={CATEGORIES} />
+        </Col>
+      </Row>
     </ContentLayout>
   )
 }

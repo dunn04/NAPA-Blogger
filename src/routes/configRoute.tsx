@@ -6,6 +6,7 @@ import {
   DashboardPage,
   DraftBlogs,
   EditBlogPage,
+  FilterBlogsPage,
   HomePage,
   LoginPage,
   MyBlogWrapper,
@@ -88,6 +89,10 @@ const configRoute: RouteObject[] = [
       {
         path: ROUTE_PATHS.TAGS.ROOT,
         element: <WrapperRoute element={<TagsPage />} />
+      },
+      {
+        path: ROUTE_PATHS.BLOG_FILTER.WITH_FILTER,
+        element: <WrapperRoute element={<FilterBlogsPage />} />
       },
       {
         path: ROUTE_PATHS.DASHBOARD,

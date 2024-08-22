@@ -32,8 +32,11 @@ const BLOGS = {
     WITH_ID: '/blogs/detail/:id'
   },
   BLOG_TAGS: {
-    BASE: '/blogs/tags',
-    WITH_TAG: '/blogs/tags/:tag'
+    BASE: '/blogs/tags'
+  },
+  BLOG_FILTER: {
+    BASE: '/blogs/filter',
+    WITH_FILTER: '/blogs/filter/:id'
   }
 }
 
@@ -61,7 +64,7 @@ const ROUTE_ACTIONS = {
   BLOG_WITH_TAG: (tag: string) => `${BLOGS.BLOG_TAGS.BASE}/${tag}`,
   BLOG_EDIT_WITH_ID: (id: string) => `${BLOGS.MY_BLOGS.EDIT.replace(':id', id)}`,
   USER_PROFILE_WITH_ID: (id: string) => `${USER.PROFILE.BASE}/${id}`,
-  TAGS_WITH_TAG: (tag: string) => `${COMMONS.TAGS.WITH_TAG.replace(':tag', tag)}`
+  BLOG_WITH_FILTER: (id: string | number, filter: string) => `${BLOGS.BLOG_FILTER.BASE}/${id}?filter=${filter}`
 }
 
 export { ROUTE_PATHS, ROUTE_ACTIONS }

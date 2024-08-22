@@ -1,3 +1,4 @@
+import { ROUTE_ACTIONS } from '@/constants'
 import { Category } from '@/types'
 import { Badge, Flex, Typography } from 'antd'
 import { FC } from 'react'
@@ -16,7 +17,7 @@ const Categories: FC<Props> = ({ className, categories, title = 'Other Featured 
       <Typography.Text className='uppercase w-full'>{title}</Typography.Text>
       <Flex gap={4} wrap className='mt-4'>
         {categories.map((category) => (
-          <Link to='' key={category.id}>
+          <Link to={ROUTE_ACTIONS.BLOG_WITH_FILTER(category.id, category.name)} key={category.id}>
             <Badge count={category.name} color='cyan' className='cursor-pointer' />
           </Link>
         ))}
