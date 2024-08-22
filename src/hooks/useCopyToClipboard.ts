@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 
-const useCopyToClipboard = (timeout?: number) => {
+const useCopyToClipboard = (timeout?: number): [(text: string) => void, boolean] => {
   const [isCopied, setIsCopied] = useState<boolean>(false)
 
   const copyToClipboard = useCallback(
@@ -18,7 +18,7 @@ const useCopyToClipboard = (timeout?: number) => {
     },
     [timeout]
   )
-  return [isCopied, copyToClipboard]
+  return [copyToClipboard, isCopied]
 }
 
 export { useCopyToClipboard }

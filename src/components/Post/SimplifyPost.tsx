@@ -9,6 +9,7 @@ import { limitTextToWords, makeBeautyDate } from '@/utils'
 import { Link } from 'react-router-dom'
 import { ROUTE_ACTIONS } from '@/constants'
 import { ReportModal } from '../Report'
+import { useCopyLink } from '@/hooks'
 
 type Props = {
   className?: string
@@ -21,15 +22,26 @@ const LIMIT_WORDS = 20
 const SimplifyPost: FC<Props> = ({ className, post, nonImage = false }) => {
   const { author } = post
   const content = useMemo(() => limitTextToWords(post.shortContent, LIMIT_WORDS), [post.shortContent])
+  const { contextHolder, handleCopyLink } = useCopyLink()
+
+  const handleMenuClick = (key: string) => {
+    switch (key) {
+      case 'link':
+        handleCopyLink(ROUTE_ACTIONS.BLOG_DETAIL_WITH_ID(`${post.id}`))
+        break
+    }
+  }
+
   return (
     <Badge.Ribbon text={post.category.name} rootClassName={twMerge(className)}>
+      {contextHolder}
       <Card hoverable className='cursor-default'>
         <Flex className='mt-2'>
           <Author author={author} avatarSize='large' />
           <Space className='ml-auto'>
             <ToggleBookmark />
             <ReportModal />
-            <PostShareDropdown />
+            <PostShareDropdown onMenuClick={(info) => handleMenuClick(info.key)} />
           </Space>
         </Flex>
         <Flex gap={14} className='mt-2'>

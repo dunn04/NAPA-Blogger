@@ -10,8 +10,8 @@ import {
   Tags,
   ReportModal
 } from '@/components'
-import { COMMENTS, POSTS } from '@/constants'
-import { useToggle } from '@/hooks'
+import { COMMENTS, POSTS, ROUTE_ACTIONS } from '@/constants'
+import { useCopyLink, useToggle } from '@/hooks'
 import { PostInstance } from '@/types'
 import { makeBeautyDate } from '@/utils'
 import { CommentOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons'
@@ -133,9 +133,19 @@ const PostDetailPage: FC = () => {
   const { id } = useParams<{ id: string }>()
   const post = getPostWithId(id || '1')
   const [openComment, toggleComment] = useToggle(false)
+  const { contextHolder, handleCopyLink } = useCopyLink()
+
+  const handleMenuClick = (key: string) => {
+    switch (key) {
+      case 'link':
+        handleCopyLink(ROUTE_ACTIONS.BLOG_DETAIL_WITH_ID(`${post.id}`))
+        break
+    }
+  }
 
   return (
     <div className='max-w-4xl mx-auto'>
+      {contextHolder}
       <Typography.Title level={2}>{post.title}</Typography.Title>
       <Categories categories={[post.category]} className='mb-6' title='' />
       <Flex justify='center' className='mt-2'>
@@ -143,7 +153,7 @@ const PostDetailPage: FC = () => {
         <Space className='ml-auto'>
           <ToggleBookmark />
           <ReportModal />
-          <PostShareDropdown />
+          <PostShareDropdown onMenuClick={(info) => handleMenuClick(info.key)} />
         </Space>
       </Flex>
       <Badge status='success' text={`Published at ${makeBeautyDate(post.publishedAt)}`} className='my-4' />
