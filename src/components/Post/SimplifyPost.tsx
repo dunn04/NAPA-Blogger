@@ -8,6 +8,7 @@ import { PostShareDropdown } from './PostShareDropdown'
 import { limitTextToWords, makeBeautyDate } from '@/utils'
 import { Link } from 'react-router-dom'
 import { ROUTE_ACTIONS } from '@/constants'
+import { ReportModal } from '../Report'
 
 type Props = {
   className?: string
@@ -27,6 +28,7 @@ const SimplifyPost: FC<Props> = ({ className, post, nonImage = false }) => {
           <Author author={author} avatarSize='large' />
           <Space className='ml-auto'>
             <ToggleBookmark />
+            <ReportModal />
             <PostShareDropdown />
           </Space>
         </Flex>

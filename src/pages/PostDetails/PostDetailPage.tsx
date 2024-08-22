@@ -7,7 +7,8 @@ import {
   ContentPreview,
   ListPost,
   Categories,
-  Tags
+  Tags,
+  ReportModal
 } from '@/components'
 import { COMMENTS, POSTS } from '@/constants'
 import { useToggle } from '@/hooks'
@@ -141,6 +142,7 @@ const PostDetailPage: FC = () => {
         <Author author={post.author} avatarSize='large' />
         <Space className='ml-auto'>
           <ToggleBookmark />
+          <ReportModal />
           <PostShareDropdown />
         </Space>
       </Flex>
