@@ -1,10 +1,11 @@
 import { ROUTE_PATHS } from '@/constants'
-import { AdminLayout, MainLayout } from '@/Layouts'
+import { MainLayout } from '@/Layouts'
 import {
   AuthWrapper,
   CreateBlogPage,
   DashboardPage,
   DraftBlogs,
+  EditBlogPage,
   HomePage,
   LoginPage,
   MyBlogWrapper,
@@ -81,8 +82,16 @@ const configRoute: RouteObject[] = [
         element: <WrapperRoute element={<CreateBlogPage />} auth />
       },
       {
+        path: ROUTE_PATHS.MY_BLOGS.EDIT,
+        element: <WrapperRoute element={<EditBlogPage />} auth />
+      },
+      {
         path: ROUTE_PATHS.TAGS.ROOT,
         element: <WrapperRoute element={<TagsPage />} />
+      },
+      {
+        path: ROUTE_PATHS.DASHBOARD,
+        element: <DashboardPage />
       }
     ]
   },
@@ -96,15 +105,6 @@ const configRoute: RouteObject[] = [
       {
         path: ROUTE_PATHS.SIGNUP,
         element: <SignUpPage />
-      }
-    ]
-  },
-  {
-    element: <AdminLayout />,
-    children: [
-      {
-        path: ROUTE_PATHS.DASHBOARD,
-        element: <DashboardPage />
       }
     ]
   },

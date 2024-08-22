@@ -28,6 +28,7 @@ export type PostInstance = Omit<Post, 'statusId' | 'authorId'> & {
 export type PostCreateParams = Pick<Post, 'title' | 'content'> & {
   tags: number[]
   categoryId: number
+  publishedAt: number
 }
 
 export interface PostImage {

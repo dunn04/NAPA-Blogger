@@ -2,12 +2,15 @@ import { Button, DatePicker, Form, Input, Select } from 'antd'
 import { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Editor } from '../Editor'
+import { PostCreateParams } from '@/types'
+import dayjs from 'dayjs'
 
 type Props = {
   className?: string
+  initialValues?: PostCreateParams
 }
 
-const PostForm: FC<Props> = ({ className }) => {
+const PostForm: FC<Props> = ({ className, initialValues }) => {
   const categoryOptions = [
     {
       label: 'Technology',
@@ -79,20 +82,27 @@ const PostForm: FC<Props> = ({ className }) => {
   ]
 
   return (
-    <Form layout='vertical' className={twMerge('', className)}>
-      <Form.Item label='Title'>
+    <Form
+      layout='vertical'
+      className={twMerge('', className)}
+      initialValues={{
+        ...initialValues,
+        publishedAt: initialValues?.publishedAt ? dayjs.unix(initialValues.publishedAt) : undefined
+      }}
+    >
+      <Form.Item label='Title' name='title'>
         <Input placeholder='Enter your title of blog' />
       </Form.Item>
-      <Form.Item label='Category'>
+      <Form.Item label='Category' name='category'>
         <Select defaultValue={1} options={categoryOptions} />
       </Form.Item>
-      <Form.Item label='Tags'>
+      <Form.Item label='Tags' name='tags'>
         <Select mode='tags' options={tagOptions} />
       </Form.Item>
-      <Form.Item label='Published at'>
+      <Form.Item label='Published at' name='publishedAt'>
         <DatePicker className='w-full' />
       </Form.Item>
-      <Form.Item label='Content'>
+      <Form.Item label='Content' name='content'>
         <Editor />
       </Form.Item>
       <Form.Item>
