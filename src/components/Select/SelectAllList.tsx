@@ -1,5 +1,5 @@
 import { useSelectAll } from '@/hooks'
-import { Checkbox, Dropdown, Empty, Space, theme } from 'antd'
+import { Button, Checkbox, Empty, Space, theme } from 'antd'
 import { createContext, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { SelectCheckbox } from './SelectCheckbox'
@@ -39,14 +39,9 @@ function Instance<T>({ dataSource = [], className, renderItem, wrapper, extra, a
             backgroundColor: token.colorBgContainer
           }}
         >
-          <Dropdown.Button
-            trigger={['click']}
-            menu={{
-              items: []
-            }}
-          >
+          <Button>
             <Checkbox indeterminate={isSelectAllIndeterminate} onChange={toggleSelectAll} checked={isChecked} />
-          </Dropdown.Button>
+          </Button>
           {showExtra && extra}
         </Space>
         {wrapper
