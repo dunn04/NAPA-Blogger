@@ -86,6 +86,7 @@ const PostForm: FC<Props> = ({ className, initialValues }) => {
       layout='vertical'
       className={twMerge('', className)}
       initialValues={{
+        category: 1,
         ...initialValues,
         publishedAt: initialValues?.publishedAt ? dayjs.unix(initialValues.publishedAt) : undefined
       }}
@@ -94,7 +95,7 @@ const PostForm: FC<Props> = ({ className, initialValues }) => {
         <Input placeholder='Enter your title of blog' />
       </Form.Item>
       <Form.Item label='Category' name='category'>
-        <Select defaultValue={1} options={categoryOptions} />
+        <Select options={categoryOptions} />
       </Form.Item>
       <Form.Item label='Tags' name='tags'>
         <Select mode='tags' options={tagOptions} />
