@@ -11,7 +11,7 @@ type Props = Omit<DrawerProps, 'onClose'> & {
 const DrawerMenu: FC<Props> = ({ ...props }) => {
   const Title = (
     <Flex align='center' justify='space-between'>
-      <Logo sizes='sm' />
+      <Logo sizes='sm' onClick={props.onClose} />
       <Button type='text' onClick={props.onClose}>
         <MenuFoldOutlined />
       </Button>

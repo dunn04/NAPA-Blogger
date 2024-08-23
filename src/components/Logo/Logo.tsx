@@ -1,7 +1,7 @@
 import { ROUTE_PATHS } from '@/constants'
 import { theme } from 'antd'
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { twMerge } from 'tailwind-merge'
 
 const SHAPES = {
@@ -25,15 +25,23 @@ type Props = {
   shapes?: keyof typeof SHAPES
   sizes?: keyof typeof SIZES
   className?: string
+  onClick?: () => void
 }
 
-const Logo: FC<Props> = ({ shapes = 'square', className, sizes = 'md' }) => {
+const Logo: FC<Props> = ({ shapes = 'square', className, sizes = 'md', onClick }) => {
+  const navigate = useNavigate()
   const { token } = theme.useToken()
+
+  const handeMenuClick = () => {
+    navigate(ROUTE_PATHS.HOME)
+    onClick?.()
+  }
+
   return (
-    <Link
-      to={ROUTE_PATHS.HOME}
+    <div
+      onClick={handeMenuClick}
       className={twMerge(
-        'inline-flex justify-center items-center flex-shrink-0',
+        'inline-flex justify-center items-center flex-shrink-0 cursor-pointer',
         SHAPES[shapes],
         SIZES[sizes],
         className
@@ -43,7 +51,7 @@ const Logo: FC<Props> = ({ shapes = 'square', className, sizes = 'md' }) => {
       }}
     >
       <p className={twMerge('font-pacifico text-white', FONTS[sizes])}>D</p>
-    </Link>
+    </div>
   )
 }
 
