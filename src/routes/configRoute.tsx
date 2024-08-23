@@ -2,6 +2,7 @@ import { ROUTE_PATHS } from '@/constants'
 import { MainLayout } from '@/Layouts'
 import {
   AuthWrapper,
+  BlogPreviewPage,
   CreateBlogPage,
   DashboardPage,
   DraftBlogs,
@@ -97,6 +98,10 @@ const configRoute: RouteObject[] = [
       {
         path: ROUTE_PATHS.DASHBOARD,
         element: <DashboardPage />
+      },
+      {
+        path: ROUTE_PATHS.BLOG_PREVIEW.WITH_ID,
+        element: <BlogPreviewPage />
       }
     ]
   },

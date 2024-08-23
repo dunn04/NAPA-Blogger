@@ -5,6 +5,8 @@ import { FC, ReactNode, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Author } from '../Avatar'
 import { limitTextToWords, makeBeautyDate } from '@/utils'
+import { ROUTE_ACTIONS } from '@/constants'
+import { Link } from 'react-router-dom'
 
 type Props = {
   post: PostSimplify
@@ -28,7 +30,15 @@ const PostApproved: FC<Props> = ({ className, post, ...props }) => {
       {...props}
     >
       <Space direction='vertical'>
-        <Typography.Title level={5}>{post.title}</Typography.Title>
+        <Typography.Title level={5}>
+          <Link
+            to={ROUTE_ACTIONS.BLOG_PREVIEW_WITH_ID(`${post.id}`)}
+            className='!text-ant-text-color transition-colors hover:!text-ant-primary'
+            target='_blank'
+          >
+            {post.title}
+          </Link>
+        </Typography.Title>
         <Typography.Paragraph>{limitTextToWords(post.shortContent, 20)}</Typography.Paragraph>
         <Typography.Text type='secondary'>{makeBeautyDate(post.publishedAt)}</Typography.Text>
       </Space>

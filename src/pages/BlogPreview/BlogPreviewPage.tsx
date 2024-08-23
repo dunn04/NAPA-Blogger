@@ -1,13 +1,10 @@
-import { PostCommentDrawer, ListPost, PostDetailContent } from '@/components'
-import { COMMENTS, POSTS } from '@/constants'
-import { useToggle } from '@/hooks'
+import { PostDetailContent } from '@/components'
 import { PostInstance } from '@/types'
-import { Divider, Typography } from 'antd'
+import { Button, Card, Space } from 'antd'
 import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 
-// Fake data
-
+// Fake post data
 const getPostWithId = (id: string): PostInstance => ({
   id: Number(id),
   title: 'Lorem ipsum dolor sit amet',
@@ -19,7 +16,7 @@ Web development has been evolving rapidly, and 2024 is no exception. In this blo
 
 ## 1. The Growth of Web3 Technologies
 
-![Web3](https://www.simplilearn.com/ice9/free_resources_article_thumb/What_is_the_Importance_of_Technology.jpg)
+![Web3](https://www.simplilearn.com/ice9/free_resources_article_thumb/What_is_the_Importance_of_Technology.14jpg)
 
 Web3 is no longer just a buzzword. The decentralized web is becoming more mainstream, with blockchain technology at the forefront. Developers are focusing on building decentralized applications (dApps) that offer greater transparency, security, and user control.
 
@@ -116,21 +113,22 @@ The web development landscape in 2024 is full of exciting opportunities. From We
   ],
   updatedAt: Date.now()
 })
-const PostDetailPage: FC = () => {
+const BlogPreviewPage: FC = () => {
   const { id } = useParams<{ id: string }>()
-  const post = getPostWithId(id || '1')
-  const [openComment, toggleComment] = useToggle(false)
+
+  const post = getPostWithId(`${id}`)
 
   return (
-    <div className='max-w-4xl mx-auto'>
+    <Space className='max-w-4xl mx-auto w-full flex' direction='vertical'>
       <PostDetailContent post={post} />
-      <Divider />
-      <Typography.Title level={4} className='mt-4'>
-        Other Posts
-      </Typography.Title>
-      <ListPost posts={POSTS.slice(0, 4)} postNonImage />
-      <PostCommentDrawer comments={COMMENTS} open={openComment} onClose={toggleComment} />
-    </div>
+      <Card className='fixed bottom-0 left-0 w-full pl-20'>
+        <Space className='flex justify-end'>
+          <Button>Reject</Button>
+          <Button type='primary'>Approved</Button>
+        </Space>
+      </Card>
+    </Space>
   )
 }
-export { PostDetailPage }
+
+export { BlogPreviewPage }
