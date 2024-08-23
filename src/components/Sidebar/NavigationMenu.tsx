@@ -6,9 +6,10 @@ import { twMerge } from 'tailwind-merge'
 
 type Props = {
   className?: string
+  onItemClick?: (key: string) => void
 }
 
-const NavigationMenu: FC<Props> = ({ className }) => {
+const NavigationMenu: FC<Props> = ({ className, onItemClick }) => {
   const location = useLocation()
   const navigate = useNavigate()
   const NAV_ITEMS = useMemo(() => {
@@ -24,6 +25,7 @@ const NavigationMenu: FC<Props> = ({ className }) => {
   }, [location, NAV_ITEMS])
 
   const handleMenuClick = (key: string) => {
+    onItemClick?.(key)
     navigate(key)
   }
   return (

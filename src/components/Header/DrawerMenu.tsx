@@ -1,10 +1,12 @@
 import { Button, Drawer, DrawerProps, Flex } from 'antd'
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Logo } from '../Logo'
 import { NavigationMenu } from '../Sidebar'
 import { MenuFoldOutlined } from '@ant-design/icons'
 
-type Props = DrawerProps
+type Props = Omit<DrawerProps, 'onClose'> & {
+  onClose?: (e?: React.MouseEvent | React.KeyboardEvent) => void
+}
 
 const DrawerMenu: FC<Props> = ({ ...props }) => {
   const Title = (
@@ -17,7 +19,7 @@ const DrawerMenu: FC<Props> = ({ ...props }) => {
   )
   return (
     <Drawer placement='left' title={Title} closeIcon={null} {...props}>
-      <NavigationMenu className='' />
+      <NavigationMenu className='' onItemClick={() => props.onClose?.()} />
     </Drawer>
   )
 }
