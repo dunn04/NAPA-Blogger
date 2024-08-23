@@ -15,6 +15,16 @@ export default {
         surface: '#F5F4FE',
         'ant-primary': token.colorPrimary,
         'ant-text-color': token.colorText
+      },
+      screens: {
+        screens: {
+          xs: '480px',
+          sm: '576px',
+          md: '768px',
+          lg: '992px',
+          xl: '1200px',
+          xxl: '1600px'
+        }
       }
     }
   },

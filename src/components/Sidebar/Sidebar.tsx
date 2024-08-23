@@ -1,8 +1,8 @@
-import { ADMIN_SIDEBAR_MENU_ITEMS, SIDE_BAR_MENU_ITEMS } from '@/constants'
-import { Layout, Menu, theme } from 'antd'
-import { FC, memo, useMemo } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Layout, theme } from 'antd'
+import { FC, memo } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { NavigationMenu } from './NavigationMenu'
+import { BREAKPOINTS, useBreakpoint } from '@/hooks'
 
 type Props = {
   className?: string
@@ -10,28 +10,10 @@ type Props = {
 
 const Instance: FC<Props> = ({ className }) => {
   const { token } = theme.useToken()
-  const location = useLocation()
-  const navigate = useNavigate()
-
-  const NAV_ITEMS = useMemo(() => {
-    return [...ADMIN_SIDEBAR_MENU_ITEMS, ...SIDE_BAR_MENU_ITEMS]
-  }, [])
-
-  const selectKeys = useMemo(() => {
-    const keys = NAV_ITEMS.map((item) => item?.key?.toString() || '')
-      .filter((key) => location.pathname.startsWith(key))
-      .sort((a, b) => b.length - a.length)
-
-    return keys[0] ? [keys[0]] : []
-  }, [location, NAV_ITEMS])
-
-  const handleMenuClick = (key: string) => {
-    navigate(key)
-  }
-
+  const { width } = useBreakpoint()
   return (
     <Layout.Sider
-      collapsedWidth={80}
+      collapsedWidth={width <= BREAKPOINTS.sm ? 0 : 80}
       collapsed
       style={{
         backgroundColor: token.colorBgContainer
@@ -39,12 +21,7 @@ const Instance: FC<Props> = ({ className }) => {
       width={240}
       className={twMerge('shadow-sm', className)}
     >
-      <Menu
-        items={NAV_ITEMS}
-        className='h-full !border-r-0'
-        selectedKeys={selectKeys}
-        onClick={(info) => handleMenuClick(info.key)}
-      />
+      <NavigationMenu className='h-full !border-r-0' />
     </Layout.Sider>
   )
 }

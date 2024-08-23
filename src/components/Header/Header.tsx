@@ -2,19 +2,21 @@ import { Button, Layout, MenuProps, Space, theme } from 'antd'
 import { FC, useMemo } from 'react'
 import { Logo } from '../Logo'
 import { Author, AvatarDropdown } from '../Avatar'
-import { PlusOutlined } from '@ant-design/icons'
+import { MenuUnfoldOutlined, PlusOutlined } from '@ant-design/icons'
 import { HEADER_AVATAR_DROPDOWN_ITEMS, ROUTE_PATHS } from '@/constants'
 import { twMerge } from 'tailwind-merge'
 import { Link, useNavigate } from 'react-router-dom'
 import { NotifyPopover } from '../Notification'
 import { Search } from './Search'
-import { BREAKPOINTS, useBreakpoint } from '@/hooks'
+import { BREAKPOINTS, useBreakpoint, useToggle } from '@/hooks'
+import { DrawerMenu } from './DrawerMenu'
 
 type Props = {
   className?: string
 }
 
 const Header: FC<Props> = ({ className }) => {
+  const [openDrawer, toggleDrawer] = useToggle()
   const { token } = theme.useToken()
   const navigate = useNavigate()
   const { width } = useBreakpoint()
@@ -55,7 +57,10 @@ const Header: FC<Props> = ({ className }) => {
       }}
       className={twMerge('flex items-center justify-between px-4 shadow-sm gap-4', className)}
     >
-      <Logo sizes='sm' />
+      <Logo sizes='sm' className='hidden sm:flex' />
+      <Button type='text' onClick={toggleDrawer} className='sm:hidden'>
+        <MenuUnfoldOutlined />
+      </Button>
       <Search />
       <Space className=''>
         <Link to={ROUTE_PATHS.CREATE_NEW_BLOG} className='hidden md:block'>
@@ -82,6 +87,7 @@ const Header: FC<Props> = ({ className }) => {
           }}
         />
       </Space>
+      <DrawerMenu open={openDrawer} onClose={toggleDrawer} className='sm:hidden' />
     </Layout.Header>
   )
 }
